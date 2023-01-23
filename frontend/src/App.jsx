@@ -1,4 +1,5 @@
 import React from 'react'
+import data from './data'
 
 export const App = () => {
   return (
@@ -6,7 +7,21 @@ export const App = () => {
       <header>
         <a href="/">Backloggo</a>
       </header>
-      <main>Games</main>
+      <main>
+        <h1>Trending Games</h1>
+      <div className="games">
+        {data.games.map(game => (
+        <div className='game' key={game.slug}>
+            <a href={`/product/${game.slug}`}>
+             <img src={game.image} alt={game.name}/>
+            </a>
+            <p>
+              {}
+            </p>
+          </div>))
+        }
+      </div>
+      </main>
 
     </div>
   )
