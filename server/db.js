@@ -25,4 +25,10 @@ const RatingSchema = new mongoose.Schema({
 
 const RatingModel = mongoose.model('Rating', RatingSchema)
 
-export { UserProfileModel, ReviewModel, RatingModel }
+const PlatformSchema = new mongoose.Schema({
+    name: { type: String }
+})
+
+const PlatformModel = mongoose.model('Platform', PlatformSchema)
+
+export { UserProfileModel, ReviewModel, RatingModel, PlatformModel }
