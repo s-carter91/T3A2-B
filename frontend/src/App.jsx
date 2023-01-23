@@ -1,32 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React from 'react'
+import data from './data'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export const App = () => {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <header>
+        <a href="/">Backloggo</a>
+      </header>
+      <main>
+        <h1>Trending Games</h1>
+      <div className="games">
+        {data.games.map(game => (
+        <div className='game' key={game.slug}>
+            <a href={`/product/${game.slug}`}>
+             <img src={game.image} alt={game.name}/>
+            </a>
+            <p>
+              {}
+            </p>
+          </div>))
+        }
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </main>
+
     </div>
   )
 }
