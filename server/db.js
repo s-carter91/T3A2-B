@@ -2,4 +2,5 @@ import mongoose from "mongoose"
 
 mongoose.set('strictQuery', true)
 
-// testing da things from Sam
+
+// this is sam <h3> hello  to do world </h3>
