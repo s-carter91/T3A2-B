@@ -1,4 +1,4 @@
-import { GameModel, ReviewModel, RatingModel, PlatformModel } from './db'
+import { GameModel, ReviewModel, RatingModel, PlatformModel, GenreModel, dbClose  } from './db.js'
 
 // deleting data before seeting
 await GameModel.deleteMany()
@@ -9,6 +9,18 @@ await RatingModel.deleteMany()
 console.log('Deleted all reviews')
 await PlatformModel.deleteMany()
 console.log('Deleted all platforms')
+
+const genres = [
+    {name: 'Action'},
+    {name: 'Adventure'},
+    {name: 'Racing'},
+    {name: 'Sport'},
+    {name: 'Puzzle'},
+    {name: 'MOBA'},
+]
+
+const gens = await GenreModel.insertMany(genres)
+console.log('Updated all platforms')
 
 const platforms = [
     {name: 'Playstation'},
@@ -22,23 +34,28 @@ console.log('Updated all platforms')
 
 const allgames = [{
     name: 'God of War',
+    genre: gens[1],
     platform: plats[0],
-    multiplayer: 'False',
+    multiplayer: false,
     "time to complete": 20 
 },
 {
     name: 'League of Legends',
+    genre: gens[5],
     platform: plats[2],
-    multiplayer: 'True',
-    "time to complete": 1000
+    multiplayer: true,
+    time_to_complete: 1000
 },
 {
     name: 'Pokemon Scarlet',
+    genre: gens[1],
     platform: plats[3],
-    multiplayer: 'True',
-    "time to complete": 35
+    multiplayer: true,
+    time_to_complete: 35
 }
 ]
 
+const games = await GameModel.insertMany(allgames)
+console.log('Updated all games')
 
-const games = await GamesModel.insertMany(allgames)
+dbClose()
