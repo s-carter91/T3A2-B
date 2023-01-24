@@ -1,5 +1,5 @@
 import express from 'express'
-import gamesRoutes from './routes/games_routes'
+import gamesRoutes from './routes/games_routes.js'
 
 const app = express()
 
