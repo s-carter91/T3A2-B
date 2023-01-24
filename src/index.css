@@ -1,0 +1,25 @@
+.site-container {
+  min-height: 100vH;
+}
+
+main{
+  flex: 1;
+  
+}
+
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.game {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+
+.product img{
+  width: 100%;
+  max-width: 400px;
+}
