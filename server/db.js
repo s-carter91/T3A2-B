@@ -38,14 +38,14 @@ const GameModel = mongoose.model('Game', gameSchema)
 
 const ReviewSchema = new mongoose.Schema({
     gameId: { type: mongoose.ObjectId, ref: 'Game' },  // Review must be linked to a game model
-    review: { type: String, required: true }
+    content: { type: String, required: true }
 })
 
 const ReviewModel = mongoose.model('Review', ReviewSchema)
 
 const RatingSchema = new mongoose.Schema({
     gameId: { type: mongoose.ObjectId, ref: 'GameId' }, // Rating must be linked to a game object
-    rating: { type: Number, required: true }
+    stars: { type: Number, required: true }
 })
 
 const RatingModel = mongoose.model('Rating', RatingSchema)
