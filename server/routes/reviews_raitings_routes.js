@@ -15,7 +15,6 @@ app.get('/reviews/:gameid', async (req, res) => {
                 res.status(404).send({ error: 'that game does not have any reviews' })
             }
         } else {
-            res.status(404).send({ error: 'that game does not exist' })
         }
     } catch (err) {
         res.status(500).send({ error: err.message })
