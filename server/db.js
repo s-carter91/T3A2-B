@@ -31,10 +31,18 @@ const gameSchema = new mongoose.Schema({
     name: { type: String, required: true },
     genre: { type: mongoose.ObjectId, ref: 'Genre' },  
     platform: { type: mongoose.ObjectId, ref: 'Platform' },
-    multiplayer: { type: Boolean, required: true}
+    multiplayer: { type: Boolean, required: true},
+    
 })
 
 const GameModel = mongoose.model('Game', gameSchema)
+
+const imageSchema = new mongoose.Schema({
+    img:{data:Buffer},
+    contentType: String
+})
+
+
 
 const reviewSchema = new mongoose.Schema({
     gameId: { type: mongoose.ObjectId, ref: 'Game' },  // Review must be linked to a game model
