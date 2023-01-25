@@ -1,14 +1,21 @@
 import express from 'express'
 import gamesRoutes from './routes/games_routes.js'
+import { GenreModel, PlatformModel } from './db.js'
 
 const app = express()
 
 app.use(express.json())
 
+app.use('/games', gamesRoutes)
+
 app.get('/', (request, response) => response.send({ info: 'Backloggo'}))
+
+
+app.get('/genres', async (req,res) => res.send(await GenreModel.find()))
+
+app.get('/platforms', async (req,res) => res.send(await PlatformModel.find()))
 
 console.log("Greet Friends")
 
-app.use('/games', gamesRoutes)
 
 export default app
