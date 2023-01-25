@@ -1,4 +1,8 @@
-import { UserProfileModel, GameModel, ReviewModel, RatingModel, PlatformModel, GenreModel, dbClose  } from './db.js'
+
+import { UserProfileModel, GameModel, ReviewModel, RatingModel, PlatformModel, GenreModel } from './models/UserModel.js'
+import { connectToDb, dbClose } from './db.js'
+
+connectToDb()
 
 // deleting data before seeing
 await UserProfileModel.deleteMany()

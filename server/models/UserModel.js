@@ -1,4 +1,7 @@
 import mongoose from "mongoose"
+
+// mongoose.set('strictQuery', true)
+
 const userProfileSchema = new mongoose.Schema({
     username: {type: String, required: true},
     currentGames: [{ type: mongoose.ObjectId, ref: 'Game' }],
@@ -51,10 +54,10 @@ const genreSchema = new mongoose.Schema({
 
 const GenreModel = mongoose.model('Genre', genreSchema)
 
-const completedSchema = new mongoose.Schema({
-    gameId: { type: mongoose.ObjectId, ref: 'GameId' },
-})
-
-const CompletedModel = mongoose.model('Completed', completedSchema)
+mongoose.set('strictQuery', true)
+async function dbClose(){
+    await mongoose.connection.close();
+    console.log("Database disconnected!");
+}
 
 export {UserProfileModel, GameModel, GenreModel, ReviewModel, RatingModel, PlatformModel }
