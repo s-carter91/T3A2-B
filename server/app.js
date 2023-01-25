@@ -1,7 +1,10 @@
 import express from 'express'
 import gamesRoutes from './routes/games_routes.js'
 import reviewsRoutes from './routes/reviews_raitings_routes.js'
-import ratingsRoutes from './routes/ratings_routes.js'
+import { GameModel } from './models/GameModel.js'
+import { ReviewModel } from './models/ReviewModel.js'
+import { PlatformModel } from './models/PlatformModel.js'
+
 import usersRoutes from './routes/user_routes.js'
 
 const app = express()
