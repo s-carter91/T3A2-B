@@ -8,7 +8,7 @@ router.get('/:gameid', async (req, res) => {
     try {
         const game = await GameModel.findById(req.params.gameid)
         if (game) {
-            const ratings = await RatingModel.find({ gameId: req.params.gameid }).populate({ path : 'game', select: 'gameId'  }) // want this to return an array
+            const ratings = await RatingModel.find({ gameId: req.params.gameid })//.populate({ path : 'game', select: 'gameId'  }) // want this to return an array
             if (ratings) {
                 res.send(ratings)
             } else {
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
         const { gameId, stars } = req.body
         const game = await GameModel.findById(gameId)
         if (game) {
-            const newRating = { game, stars }
+            const newRating = { gameId, stars }
             const insertedRating = await RatingModel.create(newRating)
             res.status(201).send(insertedRating) //.populate ({ path: 'game', select: 'name' }))
         } else {
