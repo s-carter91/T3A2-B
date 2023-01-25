@@ -1,14 +1,16 @@
 import { GameModel, ReviewModel, RatingModel, PlatformModel, GenreModel, dbClose  } from './db.js'
 
-// deleting data before seeting
+// deleting data before seeing
 await GameModel.deleteMany()
 console.log('Deleted all games')
 await ReviewModel.deleteMany()
 console.log('Deleted all reviews')
 await RatingModel.deleteMany()
-console.log('Deleted all reviews')
+console.log('Deleted all ratings')
 await PlatformModel.deleteMany()
 console.log('Deleted all platforms')
+await GenreModel.deleteMany()
+console.log('Deleted all genres')
 
 const genres = [
     {name: 'Action'},
@@ -16,11 +18,11 @@ const genres = [
     {name: 'Racing'},
     {name: 'Sport'},
     {name: 'Puzzle'},
-    {name: 'MOBA'},
+    {name: 'MOBA'}
 ]
 
 const gens = await GenreModel.insertMany(genres)
-console.log('Updated all platforms')
+console.log('Updated genres')
 
 const platforms = [
     {name: 'Playstation'},
@@ -30,14 +32,14 @@ const platforms = [
 ]
 
 const plats = await PlatformModel.insertMany(platforms)
-console.log('Updated all platforms')
+console.log('Updated platforms')
 
 const allgames = [{
     name: 'God of War',
     genre: gens[1],
     platform: plats[0],
     multiplayer: false,
-    "time to complete": 20 
+    time_to_complete: 20 
 },
 {
     name: 'League of Legends',

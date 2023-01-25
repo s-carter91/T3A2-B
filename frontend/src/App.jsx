@@ -1,29 +1,42 @@
 import React from 'react'
-import data from './data'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import GameScreen from './screens/GameScreen'
+import HomeScreen from './screens/HomeScreen'
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
+import { LinkContainer } from 'react-router-bootstrap'
 
 export const App = () => {
   return (
-    <div>
+    <BrowserRouter>
+    <div className='d-flex flex-column site-container'>
       <header>
-        <a href="/">Backloggo</a>
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <LinkContainer to='/'>
+            <Navbar.Brand>Backloggo</Navbar.Brand>
+            </LinkContainer>
+            
+          </Container>
+
+        </Navbar>
+
+        <Link to="/">Backloggo</Link>
       </header>
       <main>
-        <h1>Trending Games</h1>
-      <div className="games">
-        {data.games.map(game => (
-        <div className='game' key={game.slug}>
-            <a href={`/product/${game.slug}`}>
-             <img src={game.image} alt={game.name}/>
-            </a>
-            <p>
-              {}
-            </p>
-          </div>))
-        }
-      </div>
+        <Container>
+        <Routes>
+          <Route path='/game/:slug' element={<GameScreen />} />
+          <Route path='/' element={<HomeScreen/>} />
+        </Routes>
+        </Container>
       </main>
+      <footer>
+        <div className='text-center'>All rights reserved</div>
+      </footer>
 
     </div>
+    </BrowserRouter>
   )
 }
 
