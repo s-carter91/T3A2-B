@@ -1,5 +1,5 @@
 import express from "express"
-import { GameModel, UserProfileModel } from "../db.js"
+import { RatingModel, ReviewModel, GameModel } from '../models/UserModel.js'
 
 const router = express.Router()
 

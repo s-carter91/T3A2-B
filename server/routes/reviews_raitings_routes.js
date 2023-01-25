@@ -1,14 +1,15 @@
 import express from 'express'
-import { RatingModel, ReviewModel, GameModel } from '../db'
+import { RatingModel, ReviewModel, GameModel } from '../models/UserModel.js'
 
-const app = express()
+
+const router = express.Router()
 
 // GET all reviews for a game
-app.get('/reviews/:gameid', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
-        const game = await GameModel.findById(req.params.gameid)
+        const game = await GameModel.findById(req.params.id)
         if (game) {
-            const reviews = await ReviewModel.findByID(game.id)
+            const reviews = await ReviewModel.find()
             if (reviews) {
                 res.send(reviews)
             } else {
@@ -21,8 +22,23 @@ app.get('/reviews/:gameid', async (req, res) => {
     }
 })
 
+// POST a review
+router.post('/', async (req, res) => {
+    // Testing without user ID
+    try {
+        const { gameId, content } = req.body
+        // const gameId = await GameModel.findById({ gameId: gameId })
+        const newReview = { gameId, content }
+
+        const insertedReview = await ReviewModel.create(newReview)
+        res.status(201).send(insertedReview)
+    } catch (err){
+        res.status(500).send({ error: err.message})
+    }
+})
+
 // GET all ratings for a game
-app.get('/rating/:gameid', async (req, res) => {
+router.get('/rating/:gameid', async (req, res) => {
     try {
         const game = await GameModel.findById(req.params.gameid)
         if (game) {
@@ -40,22 +56,10 @@ app.get('/rating/:gameid', async (req, res) => {
     }
 })
 
-// POST a review
-app.post('/reviews', async (req, res) => {
-    try {
-        const { gameId, content } = req.body
-        const gameObject = await GameModel.findByID({ gameId: gameId })
-        const newReview = { gameId: gameObject._id, content }
 
-        const insertedReview = await ReviewModel.create(newReview)
-        res.status(201).send(insertedReview.populate({ path: 'game', select: 'name' }))
-    } catch (err){
-        res.status(500).send({ error: err.message})
-    }
-})
 
 // POST a rating
-app.post('/ratings/gameid', async (req, res) => {
+router.post('/ratings/gameid', async (req, res) => {
     try {
         const { gameId, stars } = req.body
         const ratingObject = await GameModel.findByID[req.params.gameid]
@@ -68,3 +72,5 @@ app.post('/ratings/gameid', async (req, res) => {
     }
 })
     // create a new review and insert the gameid into the review model
+
+export default router
