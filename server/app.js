@@ -20,7 +20,7 @@ app.get('/platforms', async (req,res) => res.send(await PlatformModel.find()))
 
 app.use('/users', usersRoutes)
 
-app.get('/reviews/:id', async (req,res) => res.send(await ReviewModel.find()))
+// app.get('/reviews/:id', async (req,res) => res.send(await ReviewModel.find()))
 
 app.use('/reviews', reviewsRoutes)
 

@@ -33,7 +33,7 @@ const reviewSchema = new mongoose.Schema({
 const ReviewModel = mongoose.model('Review', reviewSchema)
 
 const ratingSchema = new mongoose.Schema({
-    gameId: { type: mongoose.ObjectId, ref: 'GameId' }, // Rating must be linked to a game object
+    gameId: { type: mongoose.ObjectId, ref: 'Game' }, // Rating must be linked to a game object
     stars: { type: Number, required: true }
 })
 
