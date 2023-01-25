@@ -49,7 +49,7 @@ app.post('/reviews', async (req, res) => {
         const newReview = { gameId: gameObject._id, content }
 
         const insertedReview = await ReviewModel.create(newReview)
-        res.status(201).send(insertedReview.populate({ path: 'game', select: 'name'}))
+        res.status(201).send(insertedReview.populate({ path: 'game', select: 'name' }))
     } catch (err){
         res.status(500).send({ error: err.message})
     }
@@ -63,7 +63,7 @@ app.post('/ratings/gameid', async (req, res) => {
         const newReview = { gameId: ratingObject}
     
         const insertedRating = await RatingModel.create(newReview)
-        res.status(201).send(insertedRating.populate({ path: 'game', select: 'name'}))
+        res.status(201).send(insertedRating.populate({ path: 'game', select: 'name' }))
     } catch (err){
     res.status(500).send({ error: err.message})
     }
