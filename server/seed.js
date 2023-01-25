@@ -1,6 +1,8 @@
-import { GameModel, ReviewModel, RatingModel, PlatformModel, GenreModel, dbClose  } from './db.js'
+import { UserProfileModel, GameModel, ReviewModel, RatingModel, PlatformModel, GenreModel, dbClose  } from './db.js'
 
 // deleting data before seeing
+await UserProfileModel.deleteMany()
+console.log('Deleted all user profiles')
 await GameModel.deleteMany()
 console.log('Deleted all games')
 await ReviewModel.deleteMany()
@@ -59,5 +61,14 @@ const allgames = [{
 
 const games = await GameModel.insertMany(allgames)
 console.log('Updated all games')
+
+const use = {
+    username: 'Testuser',
+    currentGames: games[1],
+    completedGames: games[0]
+}
+
+const users = await UserProfileModel.insertMany(use)
+console.log('Updated users')
 
 dbClose()
