@@ -1,6 +1,10 @@
-
-import { UserProfileModel, GameModel, ReviewModel, RatingModel, PlatformModel, GenreModel } from './models/UserModel.js'
-import { connectToDb, dbClose } from './db.js'
+import { connectToDb, dbClose  } from './db.js'
+import { GameModel } from './models/GameModel.js'
+import { ReviewModel } from './models/ReviewModel.js'
+import { RatingModel } from './models/RatingModel.js'
+import { PlatformModel } from './models/PlatformModel.js'
+import { GenreModel } from './models/GenreModel.js'
+import { UserProfileModel } from './models/UserModel.js'
 
 connectToDb()
 
