@@ -1,5 +1,6 @@
 import express from "express"
-import { RatingModel, GameModel } from "../models/UserModel.js"
+import { GameModel } from "../models/GameModel.js"
+import { RatingModel } from "../models/RatingModel.js"
 
 const router = express.Router()
 

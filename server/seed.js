@@ -22,6 +22,7 @@ console.log('Deleted all platforms')
 await GenreModel.deleteMany()
 console.log('Deleted all genres')
 
+
 const genres = [
     {name: 'Action'},
     {name: 'Adventure'},

@@ -1,5 +1,7 @@
 import express from 'express'
 import { GameModel } from '../models/GameModel.js'
+import { GenreModel } from '../models/GenreModel.js'
+import { PlatformModel } from '../models/PlatformModel.js'
 
 
 const router = express.Router()
@@ -77,6 +79,10 @@ router.delete('/:id', async(req, res) => {
 })
 
 //Genres
-// app.get('/genres', async (req,res) => res.send(await GenreModel.find()))
+// router.get('/genres', async (req,res) => res.send(await GenreModel.find()))
+
+//Platforms
+
+// router.get('/platforms', async (req,res) => res.send(await PlatformModel.find()))
 
 export default router
