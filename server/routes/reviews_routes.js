@@ -7,12 +7,18 @@ import { UserProfileModel } from '../models/UserModel.js'
 
 const router = express.Router()
 
+//GET all reviews
+router.get('/', async (req, res) => res.send(await ReviewModel.find()
+    // .populate('gameId')
+ // Will return all reviews
+))
+
 // GET all reviews for a game
 router.get('/:gameid', async (req, res) => {
-    try {
+    try { 
         const game = await GameModel.findById(req.params.gameid)
         if (game) {
-            const reviews = await ReviewModel.find({ gameId: req.params.gameid })
+            const reviews = await ReviewModel.find({ gameId: req.params.gameid }).populate( 'gameId' )
             if (reviews) {
                 res.send(reviews)
             } else {
