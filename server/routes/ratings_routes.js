@@ -9,7 +9,7 @@ router.get('/:gameId', async (req, res) => {
     try {
         const game = await GameModel.findById(req.params.gameId)
         if (game) {
-            const ratings = await RatingModel.find({ gameId: req.params.gameId }).populate({ path : 'game', select: 'gameId'  }) // want this to return an array
+            const ratings = await RatingModel.find({ gameId: req.params.gameId }).populate( 'gameId' ) // want this to return an array
             if (ratings) {
                 res.send(ratings)
             } else {
