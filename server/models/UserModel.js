@@ -8,10 +8,5 @@ const userProfileSchema = new mongoose.Schema({
 
 const UserProfileModel = mongoose.model('UserProfile', userProfileSchema)
 
-// const completedSchema = new mongoose.Schema({
-//     gameId: { type: mongoose.ObjectId, ref: 'GameId' },
-// })
-
-// const CompletedModel = mongoose.model('Completed', completedSchema)
 
 export { UserProfileModel }
