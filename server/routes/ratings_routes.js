@@ -1,5 +1,6 @@
 import express from "express"
-import { RatingModel, GameModel } from "../models/UserModel.js"
+import { RatingModel } from "../models/RatingModel.js"
+import { GameModel } from "../models/GameModel.js"
 
 const router = express.Router()
 
@@ -8,7 +9,7 @@ router.get('/:gameid', async (req, res) => {
     try {
         const game = await GameModel.findById(req.params.gameid)
         if (game) {
-            const ratings = await RatingModel.find({ gameId: req.params.gameid })//.populate({ path : 'game', select: 'gameId'  }) // want this to return an array
+            const ratings = await RatingModel.find({ gameId: req.params.gameid }).populate( 'gameId' ) // want this to return an array
             if (ratings) {
                 res.send(ratings)
             } else {

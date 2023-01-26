@@ -11,13 +11,14 @@ router.get('/:gameid', async (req, res) => {
     try {
         const game = await GameModel.findById(req.params.gameid)
         if (game) {
-            const reviews = await ReviewModel.find({ gameId: req.params.gameid })
+            const reviews = await ReviewModel.find({ gameId: req.params.gameid }).populate( 'gameId' )
             if (reviews) {
                 res.send(reviews)
             } else {
                 res.status(404).send({ error: 'that game does not have any reviews' })
             }
-        } else { res.send({ error: 'that game does not exist' })
+        } else { 
+            res.status(404).send({ error: 'that game does not exist' })
         }
     } catch (err) {
         res.status(500).send({ error: err.message })
