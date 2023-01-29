@@ -10,12 +10,12 @@ import Profile from './Profile'
 const App = () => {
   return (
     <>
-    <Navbar />
     <BrowserRouter>
+    <Navbar />
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/games' element={<Games />} />
-      <Route path='/user' element={<Profile />} />
+      <Route path='/users' element={<Profile />} />
       <Route path='/games/:id' element={<GameDetails />} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes> 
