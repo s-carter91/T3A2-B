@@ -9,7 +9,7 @@ const Home = () => {
             <div className="container">
                 <div className="row px-4 my-5">
                     <div className="col-sm-7">
-                    <img src="https://picsum.photos/900/400" className="img-fluid rounded" alt="dummy"/>
+                    <img src="https://picsum.photos/900/400" className="img-fluid rounded" alt="dummy" />
                     </div>
                     <div className="col-sm-5">
                         <h1 className="font-weigh-light">Tagline</h1>
@@ -27,14 +27,14 @@ const Home = () => {
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    {/* <div class="card" style="width: 18rem;">
+                                    {/* <div className="card" style="width: 18rem;">
                                         <img src="https://picsum.photos/id/200/320/200" class="card-img-top" alt="place" />
-                                        <div class="card-body">
+                                        <div className="card-body">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <button type="button" class="btn btn-primary">Go somewhere</button>
+                                            <button type="button" class="btn btn-primary">Go somewhere</button> */}
                                 
-                                        </div>
+                                        {/* </div>
                                     </div> */}
                                     hi
                                 </div>
