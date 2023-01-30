@@ -33,6 +33,20 @@ const data = {
             Overview: 'tba'
         },
     ],
+
+    gamesCard: [
+        {
+            icon: '/images/view.svg',
+            alt: 'view icon',
+            description: 'View a Large Catalogue of Games'
+        },
+        {
+            icon: '/images/search.svg',
+            alt: 'search icon',
+            description: 'Search to Find the Games For You'
+        }
+    ]
 }
+
 
 export default data;
