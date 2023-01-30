@@ -6,7 +6,6 @@ import Games from './Games'
 import Home from './Home'
 import Layout from './Layout'
 import Profile from './Profile'
-import Card from './Card'
 
 const App = () => {
   return (

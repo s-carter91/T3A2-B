@@ -2,6 +2,21 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import CardItem  from './Card'
 
+const dataer = {gamesCard: [
+    {
+        title: "Games",
+        info: "This is where you come to game",
+        icon: ['/view.svg', '/search1.svg'],
+        alt: ['view icon', 'search icon'],
+        description: [' - View a Large Catalogue of Games', ' - Search to Find the Games For You']
+    },
+    {
+        title: "Profile",
+        info: "This is where you come to view your profile",
+        icon: ['/view.svg', '/profile.svg'],
+    }
+]}
+
 const Home = () => {
 
     return (
@@ -30,14 +45,14 @@ const Home = () => {
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
                                         <div className='col'>
-                                            <p>Yes</p>
+                                            {CardItem(dataer.gamesCard[0])}
                                         </div>
-                                        <div className='col'>
+                                        {/* <div className='col'>
                                             {CardItem("profile", "This is where you can view your profile")}
                                         </div>
                                         <div className='col'>
                                             {CardItem("random", "This is where the randomness happens")}
-                                        </div>
+                                        </div> */}
                                         {/* <div class="card" style="width: 18rem;">
                                             <img src="https://picsum.photos/id/200/320/200" class="card-img-top" alt="place" />
                                             <div class="card-body">
