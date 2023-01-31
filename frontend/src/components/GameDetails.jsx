@@ -1,8 +1,11 @@
 import React from 'react'
 
-const GameDetails = () => {
+const GameDetails = ({ game }) => {
+
   return (
-    <div>GameDetails</div>
+    <>
+        <h5>{game.name}</h5>
+    </>
   )
 }
 
