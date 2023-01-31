@@ -1,6 +1,43 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState }  from 'react'
+import "./games.css";
+// import Game from './GameCard'
 
 
+// const URL = "http://localhost:4002/games";
+
+// const Games = () => {
+//     const [games, setGames] = useState();
+    
+//     useEffect(() => {
+//         async function fetchGames() {
+//             const res = await fetch(URL)
+//             const data = await res.json()
+//             setGames(data)
+
+//         }
+//         fetchGames()
+//         }, []);
+
+        
+
+
+//         return(
+//             <div>
+//             <div>
+//             <ul>
+//                 {games 
+//                 && games.map((game, index) => (
+//                     <div key={index}>
+//                         <Game game={game}/>
+//                     </div>
+//                 ))}
+//             </ul>    
+//         </div>    
+//             </div>
+//         )
+
+// }
+        
 const Games = (props) => {
 
     const [games, setGames] = useState([
@@ -31,15 +68,26 @@ const Games = (props) => {
             "background_image": "https://media.rawg.io/media/games/f46/f466571d536f2e3ea9e815ad17177501.jpg",
             "rating": 4.05,
         },
+        {
+            "id": 4828,
+            "slug": "borderlands",
+            "name": "Borderlands",
+            "released": "2009-10-20",
+            "tba": false,
+            "background_image": "https://media.rawg.io/media/games/c6b/c6bfece1daf8d06bc0a60632ac78e5bf.jpg",
+            "rating": 3.83,
+        }
     ]);
 
   return (
     <>
         <h2>Games list</h2>
         <div className="container">
-        {games.map((game, index)=> <div key={index} className="row d-flex m-3" >
-            <img src={game.background_image} width={50} alt='game' />
-        </div>)}    
+        <ul>
+        {games.map((game, index)=> <div className="gameli"><li key={index} className="game m-4" >
+            <img src={game.background_image} alt='game' />
+        </li></div>)}
+        </ul>  
         </div>
         
 
@@ -47,5 +95,6 @@ const Games = (props) => {
 
   )
 }
+
 
 export default Games
