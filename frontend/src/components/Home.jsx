@@ -2,18 +2,20 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import CardItem  from './Card'
 
-const dataer = {gamesCard: [
+const carddata = {gamesCard: [
     {
         title: "Games",
         info: "This is where you come to game",
-        icon: ['/view.svg', '/search1.svg'],
-        alt: ['view icon', 'search icon'],
-        description: [' - View a Large Catalogue of Games', ' - Search to Find the Games For You']
+        icon: ['/view.svg', '/search1.svg', '/filter.svg'],
+        alt: ['view icon', 'search icon', 'filter icon'],
+        description: [' - View a Large Catalogue of Games', ' - Search to Find the Games For You', ' - Filter to discover new games']
     },
     {
         title: "Profile",
         info: "This is where you come to view your profile",
-        icon: ['/view.svg', '/profile.svg'],
+        icon: ['/game.svg', '/check.svg', '/star.svg'],
+        alt: ['game icon', 'check icon', 'star icon'],
+        description: [' - View Saved Games on Your Profile', ' - Check of Completed Games', ' - Rate and Review Games']
     }
 ]}
 
@@ -44,8 +46,11 @@ const Home = () => {
                                 </div>
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
+                                        <div className='col bg-secondary text-white'>
+                                            {CardItem(carddata.gamesCard[0])}
+                                        </div>
                                         <div className='col'>
-                                            {CardItem(dataer.gamesCard[0])}
+                                            {CardItem(carddata.gamesCard[1])}
                                         </div>
                                         {/* <div className='col'>
                                             {CardItem("profile", "This is where you can view your profile")}
