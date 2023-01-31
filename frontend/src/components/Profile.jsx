@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 
 const Profile = () => {
@@ -9,7 +10,7 @@ const Profile = () => {
 
     useEffect(() => {
       async function fetchPlaying() {
-        const res = await fetch('http://localhost:4001/users/playing')
+        const res = await fetch('http://localhost:4002/users/playing')
         const data = await res.json()
         setPlaying(data)
       }
@@ -18,12 +19,12 @@ const Profile = () => {
 
     useEffect(() => {
       async function fetchCompleted() {
-        const res = await fetch('http://localhost:4001/users/completed')
+        const res = await fetch('http://localhost:4002/users/completed')
         const data = await res.json()
         setCompleted(data)
       }
       fetchCompleted()
-    }, [completedGames])
+    }, [])
 
     return (
         <div className='profile'>
@@ -36,7 +37,7 @@ const Profile = () => {
             <ul>
                 {playingGames.map((game, index) => (
                     <li key={index}>
-                        <Link to={`/games/${game.name}`}>{game}</Link>  
+                        <Link to={`/games/${game}`}>{game}</Link>  
                     </li>
                 ))}
             </ul>
@@ -44,7 +45,7 @@ const Profile = () => {
             <ul>
                 {completedGames.map((game, index) => (
                     <li key={index}>
-                        <Link to={`/games/${game.name}`}>{game}</Link>
+                        <Link to={`/games/${game}`}>{game}</Link>
                     </li>                
                 ))}
             </ul>

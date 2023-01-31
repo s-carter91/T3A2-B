@@ -6,6 +6,17 @@ import { RatingModel } from "../models/RatingModel.js"
 
 const router = express.Router()
 
+router.get('/playing', async( req, res) => {
+        const userObject = await UserProfileModel.findOne({ username : "Testuser" })
+        const sendObj=userObject.currentGames
+        // const sendy = sendObj.map(async(id, index) => (
+        //     await GameModel.findById(id)
+        //     ))
+            res.send(sendObj)
+    }
+)
+
+
 // Add game to users playing list
 router.patch('/playing/', async (req, res) => {
     try {
@@ -59,12 +70,28 @@ router.delete('/playing/', async (req, res) => {
     }
 })
 
+// get all completed games 
+router.get('/completed', async( req, res) => {
+    // try {
+        
+        const userObject = await UserProfileModel.findOne({ username : "Testuser" })
+        const sendObj=userObject.completedGames
+        // const sendy = sendObj.map(async(id, index) => (
+        //     await GameModel.findById(id)
+        //     ))
+            // console.log(sendy)
+            res.send(sendObj)
+    // } catch (err){
+    //     res.status(500).send({ error: err.message })
+    }
+)
+
 // Add game to completed list (checks currently playing and removes)
 router.patch('/completed/', async (req, res) => {
     try {
         const { userId , gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findOne({ _id: userId })
+        const userObject = await UserProfileModel.findById({ _id: userId })
         if (gameObject) {
             if (userObject) {
                 if (userObject.completedGames.includes(gameObject._id)) {

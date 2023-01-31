@@ -27,17 +27,18 @@ const Home = () => {
             <div className="row">
                 <div className="container">
                     <div className="row px-4 my-5">
+                        <div className="col-sm-5">
+                            <h1 className="font-weigh-light text-center">BackloGGo</h1>
+                            <p className='mt-4 text-center'>
+                                For years, humans on this earth have searched far and wide for the best game cataloguing website that uses 
+                                the MERN Stack. Look no further than BackloGGo, the superior gaming catalogue site built using the MERN stack.
+                            </p>
+                            <button type="button" className="btn btn-outline-primary">Press me</button>
+                        </div>
                         <div className="col-sm-7">
                         <img src="https://picsum.photos/900/400" className="img-fluid rounded" alt="dummy"/>
                         </div>
-                        <div className="col-sm-5">
-                            <h1 className="font-weigh-light">Tagline</h1>
-                            <p className='mt-4'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                Unde atque harum nostrum odio totam vitae ratione molestias. Doloremque impedit fugiat itaque aspernatur mollitia sit, inventore nam, ullam assumenda a placeat!
-                            </p>
-                            <button type="button" className="btn btn-outline-primary">Press me</button>
-                </div>
+                        
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">
@@ -87,7 +88,7 @@ const Home = () => {
             </main>
         <footer className="py-5 my-5 bg-dark">
             <div className="container px-4">
-                <p className="text-center text-white">Copyright &copy; Your Website 2021</p>
+                <p className="text-center text-white">Copyright &copy; BackloGGo 2023</p>
             </div>
         </footer>
     </div>
