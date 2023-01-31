@@ -2,6 +2,7 @@ import express from 'express'
 import gamesRoutes from './routes/games_routes.js'
 import reviewsRoutes from './routes/reviews_routes.js'
 import ratingsRoutes from './routes/ratings_routes.js'
+import cors from 'cors'
 import { GenreModel } from './models/GenreModel.js'
 import { PlatformModel } from './models/PlatformModel.js'
 import cors from 'cors'
@@ -12,6 +13,7 @@ const app = express()
 app.use(cors())
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/', (req, res) => res.send({ info: 'Backloggo'}))
 

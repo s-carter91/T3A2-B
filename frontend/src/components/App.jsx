@@ -11,7 +11,6 @@ const App = () => {
   
   return (
     <>
-    <BrowserRouter>
     <Navbar />
     <Routes>
       <Route path='/' element={<Home />} />
@@ -20,7 +19,6 @@ const App = () => {
       <Route path='/games/:id' element={<GameDetails />} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes> 
-    </BrowserRouter>
     {/* <Home />
     <Games />
     <Profile /> */}
