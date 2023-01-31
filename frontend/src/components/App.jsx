@@ -8,6 +8,7 @@ import Layout from './Layout'
 import Profile from './Profile'
 
 const App = () => {
+  
   return (
     <>
     <Navbar />
