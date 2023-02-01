@@ -19,7 +19,7 @@ const GameDetails = ({ game }) => {
                                 For years, humans on this earth have searched far and wide for the best game cataloguing website that uses 
                                 the MERN Stack. Look no further than BackloGGo, the superior gaming catalogue site built using the MERN stack.
                             </p>
-                            <button type="button" className="btn btn-outline-primary">Add to my games</button>
+                            <button type="button" className="btn btn-outline-primary" >Add to my games</button>
                         </div>
                         <div className="col-sm-7">
                         <img src= {game.background_image} className="img-fluid rounded" alt="dummy"/>
@@ -35,36 +35,14 @@ const GameDetails = ({ game }) => {
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
                                         <div className='col bg-secondary text-white'>
-                                            {/* {CardItem(carddata.gamesCard[0])} */}
+                                            1
                                         </div>
                                         <div className='col'>
-                                            {/* {CardItem(carddata.gamesCard[1])} */}
-                                        </div>
-                                        {/* <div className='col'>
-                                            {CardItem("profile", "This is where you can view your profile")}
+                                            2
                                         </div>
                                         <div className='col'>
-                                            {CardItem("random", "This is where the randomness happens")}
-                                        </div> */}
-                                        {/* <div class="card" style="width: 18rem;">
-                                            <img src="https://picsum.photos/id/200/320/200" class="card-img-top" alt="place" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <button type="button" class="btn btn-primary">Go somewhere</button>
-                                    
-                                            </div>
-                                        </div> */}
-                                        {/* <div>
-                                            {CardItem("game", "this is where you come to game" )}
-                                        </div> */}
-                                    {/* </div> */}
-                                    {/* <div className="col">
-                                    hi
-                                    </div>
-                                    <div className="col">
-                                    hi
-                                    </div> */}
+                                            3
+                                        </div>
 
                                 </div>
                             </div>
