@@ -83,17 +83,23 @@ const Games = ( { games } ) => {
     <>
         <h2>Games list</h2>
         <div className="container">
-        <ul>
+        {/* <ul> */}
+        <div className="row my-4 px-5 d-flex justify-content-around">
         {games.map((game, index) => (
-            <div className="gameli">
-                <li key={index} className="game m-4" >
-                    <img src={game.background_image} alt='game' />
-                    <Link to={`/games/${game.id}`}>{game.name}</Link>
-                </li>
+            <div key={index} className="gameli col">
+                {/* <li key={index} className="game m-4" > */}
+                <div className="card" >
+                <Link to={`/games/${game.id}`}>
+                <img src={game.background_image} alt='game' className="card-img-top" />
+                {game.name}</Link>
+</div>
+                    
+                {/* </li> */}
             </div>)
             )
         }
-        </ul>  
+        {/* </ul>   */}
+        </div>
         </div>
         
 
