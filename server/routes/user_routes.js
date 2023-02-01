@@ -7,12 +7,11 @@ import { RatingModel } from "../models/RatingModel.js"
 const router = express.Router()
 
 router.get('/playing', async( req, res) => {
-        const userObject = await UserProfileModel.findOne({ username : "Testuser" })
-        const sendObj=userObject.currentGames
-        // const sendy = sendObj.map(async(id, index) => (
-        //     await GameModel.findById(id)
-        //     ))
-            res.send(sendObj)
+        const userObject = await UserProfileModel
+            .findOne({ username : "Testuser" })
+            .populate("currentGames")
+        const list= userObject.currentGames
+        res.json(list)
     }
 )
 

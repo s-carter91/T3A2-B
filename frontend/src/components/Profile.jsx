@@ -37,7 +37,7 @@ const Profile = () => {
             <ul>
                 {playingGames.map((game, index) => (
                     <li key={index}>
-                        <Link to={`/games/${game}`}>{game}</Link>  
+                        <Link to={`/games/${game}`}>{game.name}</Link>  
                     </li>
                 ))}
             </ul>
@@ -45,7 +45,7 @@ const Profile = () => {
             <ul>
                 {completedGames.map((game, index) => (
                     <li key={index}>
-                        <Link to={`/games/${game}`}>{game}</Link>
+                        <Link to={`/games/${game}`}>{game.name}</Link>
                     </li>                
                 ))}
             </ul>
