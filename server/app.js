@@ -5,12 +5,9 @@ import ratingsRoutes from './routes/ratings_routes.js'
 import cors from 'cors'
 import { GenreModel } from './models/GenreModel.js'
 import { PlatformModel } from './models/PlatformModel.js'
-import cors from 'cors'
 import usersRoutes from './routes/user_routes.js'
 
 const app = express()
-
-app.use(cors())
 
 app.use(express.json())
 app.use(cors())
