@@ -1,29 +1,33 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const NewReview = ({ gameid }) => {
-    const { gameid } = useParams()
-    const [ reviews, setReview ] = useState('')
+const NewReview = ({ addReview }) => {
+    const { game_Id } = useParams()
+    // const gameId= game_Id
 
-const addReview = async (game, content, user) => { // adding this function to the entry/new route allows the route to create an entry
-    const id = entries.length
-    games.find((game => game.name === game))
-    // add a new entry
-    const newReview = {
-      gameId: game, 
-      content: content,
-      userId : user
+    const [content, setContent] = useState('')
+    const userId = '63d14625a9c87120c737c106'
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault()
+        addReview(game_Id, content, userId)
+        console.log(game_Id, userId, content)
     }
-    const returnedReview = await fetch('http://localhost:4002/reivews',{ 
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json' // only need quotes on key if it is multiple words
-        },
-        body: JSON.stringify(newReview) // the one place it won't stringify itself
-      })
-      const data = JSON.parse(returnedReview.json)
-      setReview([...reviews, data]) // using expansion operator creates a new array from the current array and adds in the new one
-      nav(`/users`)
-}
+
+    return (
+        <>
+            <h3>Review for {`${game_Id}`}</h3>
+            <form className="container" onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Review</label>
+                    <input value={content} onChange={evt => setContent(evt.target.value)} className="form-control" type="text"></input>
+                    {content.length == 0 && <span className="alert-warning"> Please enter content</span>}
+                
+                    <button className="btn btn-success" type="submit">Submit Review</button>
+                </div>
+            </form>
+        </>
+    )
 }
 
+export default NewReview

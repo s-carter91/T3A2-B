@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
-import { Routes, Route, useParams } from 'react-router-dom'
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import GameDetails from './GameDetails'
 import Games from './Games'
 import Home from './Home'
 import Profile from './Profile'
+import NewReview from './NewReview'
 
 const seedGames =[
   {
@@ -47,7 +48,9 @@ const seedGames =[
 
 
 const App = () => {
+  const nav = useNavigate()
   const [games, SetGames] = useState(seedGames)
+  const [ reviews, setReview ] = useState([])
 
 //HOC
   const ShowGameWrapper = () => {
@@ -57,7 +60,27 @@ const App = () => {
     return game_card ? <GameDetails game={game_card} /> : <h4>Game not found!</h4>
 }
 
-
+const addReview = async (game, content, user) => { 
+  const id = reviews.length
+  games.find((game => game.name === game))
+  // add a new entry
+  const newReview = {
+    gameId: game, 
+    content: content,
+    userId : user
+  }
+  const insertedReview = await fetch('http://localhost:4002/reviews',{ 
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newReview)
+    })
+    const data = await insertedReview.json()
+    setReview([...reviews, data])
+    nav(`/games`)
+}
 
   return (
     <>
@@ -66,7 +89,8 @@ const App = () => {
       <Route path='/' element={<Home />} />
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/users' element={<Profile />} />
-      <Route path='/games/:game_id' element={<ShowGameWrapper />} />
+      <Route path='/games/:game_id' element={<ShowGameWrapper reviews={reviews}/>} />
+      <Route path='/games/:game_Id/addreview' element={<NewReview addReview={addReview}/>} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes> 
     </>

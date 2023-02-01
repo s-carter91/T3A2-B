@@ -11,6 +11,8 @@ const app = express()
 
 app.use(express.json())
 
+app.use(cors())
+
 app.get('/', (req, res) => res.send({ info: 'Backloggo'}))
 
 // app.get('/genres', async (req,res) => res.send(await GenreModel.find()))
