@@ -47,14 +47,14 @@ const seedGames =[
 
 
 const App = () => {
-  const [games, SetGames] = useState([seedGames])
+  const [games, SetGames] = useState(seedGames)
 
 //HOC
   const ShowGameWrapper = () => {
-    const { id } = useParams()
-    const game_card = games[id]
-    return game_card ?  <GameDetails game={game_card} /> :
-    <h4>Game not found!</h4>
+    const { game_id } = useParams()
+    const game_card = games.find(game => game.id == game_id)
+    console.log(games);
+    return game_card ? <GameDetails game={game_card} /> : <h4>Game not found!</h4>
 }
 
 
@@ -66,7 +66,7 @@ const App = () => {
       <Route path='/' element={<Home />} />
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/users' element={<Profile />} />
-      <Route path='/games/:id' element={<ShowGameWrapper />} />
+      <Route path='/games/:game_id' element={<ShowGameWrapper />} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes> 
     </>

@@ -84,10 +84,15 @@ const Games = ( { games } ) => {
         <h2>Games list</h2>
         <div className="container">
         <ul>
-        {games.map((game, index)=> <div className="gameli"><li key={index} className="game m-4" >
-            <img src={game.background_image} alt='game' />
-            <Link to={`/games/${game.id}`}>{game.name}</Link>
-        </li></div>)}
+        {games.map((game, index) => (
+            <div className="gameli">
+                <li key={index} className="game m-4" >
+                    <img src={game.background_image} alt='game' />
+                    <Link to={`/games/${game.id}`}>{game.name}</Link>
+                </li>
+            </div>)
+            )
+        }
         </ul>  
         </div>
         

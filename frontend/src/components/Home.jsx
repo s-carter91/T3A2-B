@@ -2,20 +2,18 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import CardItem  from './Card'
 
-const carddata = {gamesCard: [
+const dataer = {gamesCard: [
     {
         title: "Games",
         info: "This is where you come to game",
-        icon: ['/view.svg', '/search1.svg', '/filter.svg'],
-        alt: ['view icon', 'search icon', 'filter icon'],
-        description: [' - View a Large Catalogue of Games', ' - Search to Find the Games For You', ' - Filter to discover new games']
+        icon: ['/view.svg', '/search1.svg'],
+        alt: ['view icon', 'search icon'],
+        description: [' - View a Large Catalogue of Games', ' - Search to Find the Games For You']
     },
     {
         title: "Profile",
         info: "This is where you come to view your profile",
-        icon: ['/game.svg', '/check.svg', '/star.svg'],
-        alt: ['game icon', 'check icon', 'star icon'],
-        description: [' - View Saved Games on Your Profile', ' - Check of Completed Games', ' - Rate and Review Games']
+        icon: ['/view.svg', '/profile.svg'],
     }
 ]}
 
@@ -27,18 +25,17 @@ const Home = () => {
             <div className="row">
                 <div className="container">
                     <div className="row px-4 my-5">
-                        <div className="col-sm-5">
-                            <h1 className="font-weigh-light text-center">BackloGGo</h1>
-                            <p className='mt-4 text-center'>
-                                For years, humans on this earth have searched far and wide for the best game cataloguing website that uses 
-                                the MERN Stack. Look no further than BackloGGo, the superior gaming catalogue site built using the MERN stack.
-                            </p>
-                            <button type="button" className="btn btn-outline-primary">Press me</button>
-                        </div>
                         <div className="col-sm-7">
                         <img src="https://picsum.photos/900/400" className="img-fluid rounded" alt="dummy"/>
                         </div>
-                        
+                        <div className="col-sm-5">
+                            <h1 className="font-weigh-light">Tagline</h1>
+                            <p className='mt-4'>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Unde atque harum nostrum odio totam vitae ratione molestias. Doloremque impedit fugiat itaque aspernatur mollitia sit, inventore nam, ullam assumenda a placeat!
+                            </p>
+                            <button type="button" className="btn btn-outline-primary">Press me</button>
+                </div>
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">
@@ -47,11 +44,8 @@ const Home = () => {
                                 </div>
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
-                                        <div className='col bg-secondary text-white'>
-                                            {CardItem(carddata.gamesCard[0])}
-                                        </div>
                                         <div className='col'>
-                                            {CardItem(carddata.gamesCard[1])}
+                                            {CardItem(dataer.gamesCard[0])}
                                         </div>
                                         {/* <div className='col'>
                                             {CardItem("profile", "This is where you can view your profile")}
@@ -88,7 +82,7 @@ const Home = () => {
             </main>
         <footer className="py-5 my-5 bg-dark">
             <div className="container px-4">
-                <p className="text-center text-white">Copyright &copy; BackloGGo 2023</p>
+                <p className="text-center text-white">Copyright &copy; Your Website 2021</p>
             </div>
         </footer>
     </div>
