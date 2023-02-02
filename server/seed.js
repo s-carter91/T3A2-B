@@ -50,28 +50,28 @@ const allgames = [{
     genre: gens[1],
     platform: plats[0],
     multiplayer: false,
-    image:'https://media.rawg.io/media/games/1aa/1aa4ca34a8a6bb57a2e065c8332dc230.jpg'
+    image:'https://media.rawg.io/media/games/1aa/1aa4ca34a8a6bb57a2e065c8332dc230.jpg',
 },
 {
     name: 'League of Legends',
     genre: gens[5],
     platform: plats[2],
     multiplayer: true,
-    image: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg'
+    image: 'https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg',
 },
 {
     name: 'Pokemon Scarlet',
     genre: gens[1],
     platform: plats[3],
     multiplayer: true,
-    image: 'https://media.rawg.io/media/games/5ab/5abb8e4af55eb8c867410c3a740355b9.jpg'
+    image: 'https://media.rawg.io/media/games/5ab/5abb8e4af55eb8c867410c3a740355b9.jpg',
 },
 {
     name: "Grand Theft Auto V",
     released: gens[1],
     platform: plats[2],
     multiplayer: false,
-    background_image: "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
+    image: "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
 
 },
 {
@@ -79,7 +79,7 @@ const allgames = [{
     released: gens[0],
     platform: plats[2],
     multiplayer: false,
-    background_image: 'https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg',
+    image: 'https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg',
 
 },
 

@@ -52,8 +52,8 @@ const Games = ( { games } ) => {
             <div key={index} className="gameli col">
                 {/* <li key={index} className="game m-4" > */}
                 <div className="card" >
-                <Link to={`/games/${game.id}`}>
-                <img src={game.background_image} alt='game' className="card-img-top" />
+                <Link to={`/games/${game._id}`}>
+                <img src={game.image} alt='game' className="card-img-top" />
                 {game.name}</Link>
 </div>
                     

@@ -37,7 +37,7 @@ const GameDetails = ({ game, addGame }) => {
                             
                         </div>
                         <div className="col-sm-7">
-                        <img src= {game.background_image} className="img-fluid rounded" alt="dummy"/>
+                        <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
                         </div>
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
