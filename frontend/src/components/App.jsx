@@ -103,28 +103,6 @@ const App = () => {
     setUsersCurrentGames([...usersCurrentGamesState, data])
   }
 
-const addReview = async (game, content, user) => { 
-  const id = reviews.length
-  games.find((game => game.name === game))
-  // add a new entry
-  const newReview = {
-    gameId: game, 
-    content: content,
-    userId : user
-  }
-  const insertedReview = await fetch('http://localhost:4002/reviews',{ 
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newReview)
-    })
-    const data = await insertedReview.json()
-    setReview([...reviews, data])
-    nav(`/games`)
-}
-
   return (
     <>
     <Navbar />
