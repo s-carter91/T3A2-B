@@ -6,6 +6,27 @@ import { RatingModel } from "../models/RatingModel.js"
 
 const router = express.Router()
 
+// Get all users
+router.get('/', async (req, res) => res.send(await UserProfileModel.find()
+))
+
+// Return specified user with ID
+router.get('/:id', async (req,res) =>{
+    try {
+        const user = await UserProfileModel.findById(req.params.id)
+        if (user) {
+            res.send(user)
+        } else {
+            res.status(404).send({error:'User not found'})
+        }
+    }
+    catch (err) {
+        res.status(500).send({error: err.message})
+
+    }
+
+})
+
 router.get('/playing', async( req, res) => {
         const userObject = await UserProfileModel
             .findOne({ username : "Testuser" })
