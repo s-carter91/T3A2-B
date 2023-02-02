@@ -6,7 +6,7 @@ const NewReview = ({ addReview }) => {
     // const gameId= game_Id
 
     const [content, setContent] = useState('')
-    const userId = '63d14625a9c87120c737c106'
+    const userId = '63d142d3c1778b1046219be3'
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
