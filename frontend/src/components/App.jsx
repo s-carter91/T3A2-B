@@ -134,7 +134,7 @@ const addReview = async (game, content, user) => {
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/users' element={<Profile />} />
       <Route path='/games/:game_id' element={<ShowGameWrapper />} />
-      <Route path='/games/:game_Id/addreview' element={<NewReview addReview={addReview}/>} />
+      <Route path='/games/:game_Id/addreview' element={<NewReview />} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes> 
     </>

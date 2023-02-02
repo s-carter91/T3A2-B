@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import CardItem  from './Card'
+import NewRating from './NewRating'
 
 const carddata = {gamesCard: [
     {
@@ -47,8 +48,14 @@ const Home = () => {
                                 </div>
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
-                                        <div className='col bg-secondary m-1'>
+                                        <div className='col bg-secondary text-white'>
                                             {CardItem(carddata.gamesCard[0])}
+                                            {/* <button className="bi bi-star">  &#9734;</button>
+                                            <button className="bi bi-star">  &#9734;</button>
+                                            <button className="bi bi-star">  &#9734;</button>
+                                            <button className="bi bi-star">  &#9734;</button>
+                                            <button className="bi bi-star">  &#9734;</button>  */}
+                                            <NewRating />
                                         </div>
                                         <div className='col bg-secondary m-1'>
                                             {CardItem(carddata.gamesCard[1])}

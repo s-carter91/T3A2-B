@@ -1,12 +1,38 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
-const NewReview = ({ addReview }) => {
+const NewReview = () => {
+    const nav = useNavigate()
+
     const { game_Id } = useParams()
     // const gameId= game_Id
+    const [ reviews, setReview ] = useState([])
+    const [ content, setContent ] = useState('')
+    const userId = '63d14625a9c87120c737c106'
 
-    const [content, setContent] = useState('')
-    const userId = '63d142d3c1778b1046219be3'
+const addReview = async (game, content, user) => { 
+    // const id = reviews.length
+    // games.find((game => game.name === game))
+    // add a new entry
+    const newReview = {
+      gameId: game, 
+      content: content,
+      userId : user
+    }
+    const insertedReview = await fetch('http://localhost:4002/reviews',{ 
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newReview)
+      })
+      const data = await insertedReview.json()
+      setReview([...reviews, data])
+      nav(`/games`)
+  }
+
+
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
