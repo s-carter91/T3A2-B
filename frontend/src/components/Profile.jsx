@@ -11,7 +11,9 @@ const Profile = () => {
     useEffect(() => {
       async function fetchPlaying() {
         const res = await fetch('http://localhost:4002/users/playing')
+        console.log
         const data = await res.json()
+        console.log(data)
         setPlaying(data)
       }
       fetchPlaying()

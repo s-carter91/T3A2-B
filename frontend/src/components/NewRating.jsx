@@ -2,21 +2,23 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Rate } from 'antd'
 
-const NewRating = () => {
-    const { game_Id } = useParams()
+// HOW DO I ADD IN THE USER ID FROM STATE !
+// How do I export the 
+// actievUser is the state being imported
+
+const NewRating = ({ activeUser }) => {
+    const { game_id } = useParams()
     // const gameId= game_Id
 
     const [stars, setStars] = useState('')
-    const userId = '63d14625a9c87120c737c106'
-    const gameId = '63d14625a9c87120c737c103'
+    const userId = '63db5a04d111a98f4568a662'
 
     const addRating = async () => {
-        const newRating = {
-            gameId: gameId, 
+        const newRating = { 
             stars: stars,
             userId : userId
           }
-          const insertedRating = await fetch('http://localhost:4002/ratings',{ 
+          const insertedRating = await fetch(`http://localhost:4002/ratings/${game_id}`,{ 
               method: 'POST',
               headers: {
                 Accept: 'application/json',
@@ -30,18 +32,17 @@ const NewRating = () => {
 
     const starsSubmit = (evt) => {
         evt.preventDefault()
-        addRating(gameId, stars, userId)
-        console.log(gameId, userId, stars)
+        addRating(game_id, stars, userId)
+        console.log(game_id, userId, stars)
     }
     return (
         <>
-            <p>Rate the {`${game_Id}`}</p>
             <form onSubmit={starsSubmit}>
                 <Rate 
                     defaultValue={stars}
                     onChange={(value) => {
                         setStars(value)
-                    }}
+                    }}    
                 />
                 <button type='submit'>Send rating</button>
             </form>
