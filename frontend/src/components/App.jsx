@@ -53,17 +53,32 @@ const App = () => {
   const [ reviews, setReview ] = useState([])
   const [ err, setErr ] = useState(false)
   const [usersCurrentGamesState, setUsersCurrentGames] = useState([])
-  const [ users, setUsers] = useState([])
+  const [ users, setUsers] = useState('')
 
 //HOC
   const ShowGameWrapper = () => {
     const { game_id } = useParams()
-    const game_card = games.find(game => game.id == game_id)
+    const game_card = games.find(game => game._id == game_id)
     console.log(games);
     return game_card ? <GameDetails game={game_card} addGame={addGame} users={users}  /> : <h4>Game not found!</h4>
 }
 
+  
   useEffect(() => {
+    async function getGames() {
+      const res = await fetch("http://localhost:4002/games")
+      const data = await res.json()
+      setGames(data)
+      }
+      getGames()
+    // fetch the "games"
+    // set the gamesState to that list of games
+  },[])
+
+  console.log(games)
+
+
+useEffect(() => {
     // fetch the "user"
     async function getUsers() {
       const res = await fetch("http://localhost:4002/users")
@@ -75,16 +90,7 @@ const App = () => {
     // set usersCurrentGamesState
   },[])
 
-  useEffect(() => {
-    async function getGames() {
-      const res = await fetch("http://localhost:4002/games")
-      const data = await res.json()
-      setGames(data)
-      }
-      getGames
-    // fetch the "games"
-    // set the gamesState to that list of games
-  },[])
+
 
   const addGame = async (game_id) => {
     console.log(game_id)
