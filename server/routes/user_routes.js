@@ -19,9 +19,9 @@ router.get('/playing', async( req, res) => {
 // Add game to users playing list
 router.patch('/playing/', async (req, res) => {
     try {
-        const { userId , gameId } = req.body
+        const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findById({ _id : userId })
+        const userObject = await UserProfileModel.findOne()
         if (gameObject) {
             if (userObject) {
                 if (userObject.currentGames.includes(gameObject._id)) {

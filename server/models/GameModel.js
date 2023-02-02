@@ -6,7 +6,7 @@ const gameSchema = new mongoose.Schema({
     platform: [{ type: mongoose.ObjectId, ref: 'Platform' }],
     multiplayer: { type: Boolean, required: true},
     time_to_complete: {type: Number, required: true},
-    // image : { type: String, required: true}
+    image : { type: String, required: true}
 })
 
 const GameModel = mongoose.model('Game', gameSchema)
