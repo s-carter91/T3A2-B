@@ -1,6 +1,13 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const GameDetails = ({ game }) => {
+    const game = useParams()
+
+    // function submit(evt) {
+    //     evt.preventDefault()
+    //     addGame( )
+    }
 
   return (
     <>
@@ -19,16 +26,15 @@ const GameDetails = ({ game }) => {
                                 For years, humans on this earth have searched far and wide for the best game cataloguing website that uses 
                                 the MERN Stack. Look no further than BackloGGo, the superior gaming catalogue site built using the MERN stack.
                             </p>
-                            <button type="button" className="btn btn-outline-primary" >Add to my games</button>
+                            <button type="button" onClick={(evt) => } className="addGame btn btn-outline-primary" >Add to my games</button>
                         </div>
                         <div className="col-sm-7">
                         <img src= {game.background_image} className="img-fluid rounded" alt="dummy"/>
                         </div>
-                        
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">
-                                    Review/rate here {game.rating}
+                                    {game.rating}
                                     
                                     </div>
                                 </div>

@@ -57,7 +57,7 @@ const App = () => {
     const { game_id } = useParams()
     const game_card = games.find(game => game.id == game_id)
     console.log(games);
-    return game_card ? <GameDetails game={game_card} /> : <h4>Game not found!</h4>
+    return game_card ? <GameDetails game ={game_card} /> : <h4>Game not found!</h4>
 }
 
 const addReview = async (game, content, user) => { 
