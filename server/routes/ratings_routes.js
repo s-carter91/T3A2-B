@@ -5,7 +5,7 @@ import { RatingModel } from "../models/RatingModel.js"
 const router = express.Router()
 
 // GET all ratings for a game
-router.get('/:gameId', async (req, res) => {
+router.get('/:gameId/', async (req, res) => {
     try {
         const game = await GameModel.findById(req.params.gameId)
         if (game) {
@@ -28,7 +28,7 @@ router.get('/:gameId', async (req, res) => {
 // POST a rating
 router.post('/', async (req, res) => {
     try {
-        const { gameId, stars } = req.body
+        const { gameId, stars, userId } = req.body
         const game = await GameModel.findById(gameId)
         if (game) {
             const newRating = { game, stars }
