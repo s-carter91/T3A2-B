@@ -63,7 +63,7 @@ const App = () => {
     return game_card ? <GameDetails game={game_card} addGame={addGame} users={users}  /> : <h4>Game not found!</h4>
 }
 
-  
+  //Fetch the games
   useEffect(() => {
     async function getGames() {
       const res = await fetch("http://localhost:4002/games")
@@ -77,7 +77,7 @@ const App = () => {
 
   console.log(games)
 
-
+//Fetch the user
 useEffect(() => {
     // fetch the "user"
     async function getUsers() {
