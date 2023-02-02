@@ -63,7 +63,7 @@ const Home = () => {
                                         {/* <div className='col'>
                                             {CardItem("profile", "This is where you can view your profile")}
                                         </div>
-                                        <div className='col'>
+                                          <div className='col'>
                                             {CardItem("random", "This is where the randomness happens")}
                                         </div> */}
                                         {/* <div class="card" style="width: 18rem;">

@@ -1,11 +1,18 @@
-import React from 'react'
+import React,  { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const GameDetails = ({ game }) => {
+const GameDetails = ({ game, addGame }) => {
+    const {game_id} = useParams()
+    const [ inPlaying, setPlaying ] = useState(false)
+
+    const handleSubmit = () => {
+        addGame(game_id)
+        setPlaying(true)
+    }
 
   return (
     <>
         <h5>{game.name}</h5>
-        {console.log(game)}
         
         <div className= "Home">
             <main>
@@ -19,16 +26,23 @@ const GameDetails = ({ game }) => {
                                 For years, humans on this earth have searched far and wide for the best game cataloguing website that uses 
                                 the MERN Stack. Look no further than BackloGGo, the superior gaming catalogue site built using the MERN stack.
                             </p>
-                            <button type="button" className="btn btn-outline-primary" >Add to my games</button>
+                            {/* <form onSubmit={handleSubmit}>
+                                <input ></input>
+                                <button type="submit" className="addGame btn btn-outline-primary" >Add to my games</button>
+                            </form> */}
+                            {inPlaying ? 
+                                <button className='btn-success btn'>✔️</button> :
+                                <button type="button" onClick={handleSubmit} className="addGame btn btn-outline-primary" >Add to my games</button>
+                                }
+                            
                         </div>
                         <div className="col-sm-7">
                         <img src= {game.background_image} className="img-fluid rounded" alt="dummy"/>
                         </div>
-                        
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">
-                                    Review/rate here {game.rating}
+                                    {game.rating}
                                     
                                     </div>
                                 </div>
@@ -58,7 +72,6 @@ const GameDetails = ({ game }) => {
         </footer>
     </div>
     </>
-  )
-}
+  )}
 
 export default GameDetails
