@@ -1,13 +1,15 @@
 import express from "express"
-import { UserProfileModel } from '../models/UserModel.js'
+import { UserModel } from '../models/UserModel.js'
 import { GameModel } from "../models/GameModel.js"
 import { ReviewModel } from "../models/ReviewModel.js"
 import { RatingModel } from "../models/RatingModel.js"
+import jwt from 'jsonwebtoken'
+import jwtVerify from "../middleware/auth.js"
 
 const router = express.Router()
 
 router.get('/playing', async( req, res) => {
-        const userObject = await UserProfileModel
+        const userObject = await UserModel
             .findOne({ username : "Testuser" })
             .populate("currentGames")
         const list= userObject.currentGames
@@ -15,13 +17,25 @@ router.get('/playing', async( req, res) => {
     }
 )
 
+// router.get('/who_am_i', jwtVerify,async (req, res) => {
+//     console.log(req.user)
+//     res.send(req.user)
+// })
+
+// router.post('/signup', async( req, res) => {
+//     const jwtobj = jwt.sign({
+//         id: "63db5a04d111a98f4568a662"
+//     }, "secreetKey")
+//     console.log(jwtobj)
+//     res.send(jwtobj)
+// })
 
 // Add game to users playing list
 router.patch('/playing/', async (req, res) => {
     try {
         const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findOne()
+        const userObject = await UserModel.findOne()
         if (gameObject) {
             if (userObject) {
                 if (userObject.currentGames.includes(gameObject._id)) {
@@ -47,7 +61,7 @@ router.delete('/playing/', async (req, res) => {
     try {
         const { userId , gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findOne({ _id: userId })
+        const userObject = await UserModel.findOne({ _id: userId })
         if (gameObject) {
             if (userObject) {
                 if (userObject.currentGames.includes(gameObject._id)) {
@@ -73,13 +87,15 @@ router.delete('/playing/', async (req, res) => {
 router.get('/completed', async( req, res) => {
     // try {
         
-        const userObject = await UserProfileModel.findOne({ username : "Testuser" })
+        const userObject = await UserModel
+        .findOne({ username : "Testuser" })
+        .populate("completed Games")
         const sendObj=userObject.completedGames
         // const sendy = sendObj.map(async(id, index) => (
         //     await GameModel.findById(id)
         //     ))
             // console.log(sendy)
-            res.send(sendObj)
+        res.send(sendObj)
     // } catch (err){
     //     res.status(500).send({ error: err.message })
     }
@@ -90,7 +106,7 @@ router.patch('/completed/', async (req, res) => {
     try {
         const { userId , gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findById({ _id: userId })
+        const userObject = await UserModel.findById({ _id: userId })
         if (gameObject) {
             if (userObject) {
                 if (userObject.completedGames.includes(gameObject._id)) {
@@ -118,7 +134,7 @@ router.delete('/completed/', async (req, res) => {
     try {
         const { userId , gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findOne({ _id: userId })
+        const userObject = await UserModel.findOne({ _id: userId })
         if (gameObject) {
             if (userObject) {
                 if (userObject.completedGames.includes(gameObject._id)) {

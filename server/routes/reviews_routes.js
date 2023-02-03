@@ -1,7 +1,7 @@
 import express from 'express'
 import { GameModel } from '../models/GameModel.js'
 import { ReviewModel } from '../models/ReviewModel.js'
-import { UserProfileModel } from '../models/UserModel.js'
+import { UserModel } from '../models/UserModel.js'
 
 
 

@@ -6,6 +6,7 @@ import cors from 'cors'
 import { GenreModel } from './models/GenreModel.js'
 import { PlatformModel } from './models/PlatformModel.js'
 import usersRoutes from './routes/user_routes.js'
+import authRoutes from './routes/user_auth.js'
 
 const app = express()
 
@@ -26,6 +27,8 @@ app.use('/users', usersRoutes)
 app.use('/reviews', reviewsRoutes)
 
 app.use('/ratings', ratingsRoutes)
+
+app.use('/auth', authRoutes)
 
 console.log("Greet Friends")
 

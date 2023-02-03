@@ -4,12 +4,12 @@ import { ReviewModel } from './models/ReviewModel.js'
 import { RatingModel } from './models/RatingModel.js'
 import { PlatformModel } from './models/PlatformModel.js'
 import { GenreModel } from './models/GenreModel.js'
-import { UserProfileModel } from './models/UserModel.js'
+import { UserModel } from './models/UserModel.js'
 
 connectToDb()
 
 // deleting data before seeing
-await UserProfileModel.deleteMany()
+await UserModel.deleteMany()
 console.log('Deleted all user profiles')
 await GameModel.deleteMany()
 console.log('Deleted all games')
@@ -91,10 +91,13 @@ console.log('Updated all games')
 const use = {
     username: 'Testuser',
     currentGames: games[1],
-    completedGames: games[0]
+    completedGames: games[0],
+    name: 'greg',
+    password: 'greg123'
+
 }
 
-const users = await UserProfileModel.insertMany(use)
+const users = await UserModel.insertMany(use)
 console.log('Updated users')
 
 dbClose()
