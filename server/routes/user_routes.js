@@ -11,6 +11,8 @@ const router = express.Router()
 // Get all users
 router.get('/', async (req, res) => {
     const userobj = await UserProfileModel.findOne()
+    .populate("currentGames")
+    .populate("completedGames")
     res.send(userobj)
 })
 
@@ -110,7 +112,8 @@ router.delete('/:userid/playing/', async (req, res) => {
 router.get('/:userid/completed', async( req, res) => {
     // try {
         
-        const userObject = await UserProfileModel.findById({ _id : req.params.userid }).populate("completedGames")
+        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
+        .populate("completedGames")
         const sendObj=userObject.completedGames
         // const sendy = sendObj.map(async(id, index) => (
         //     await GameModel.findById(id)
