@@ -10,7 +10,7 @@ const router = express.Router()
 
 // Get all users
 router.get('/', async (req, res) => {
-    const userobj = await UserProfileModel.findOne()
+    const userobj = await UserModel.findOne()
     .populate("currentGames")
     .populate("completedGames")
     res.send(userobj)
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 // Return specified user with ID
 router.get('/:id', async (req,res) =>{
     try {
-        const user = await UserProfileModel.findById(req.params.id)
+        const user = await UserModel.findById(req.params.id)
         if (user) {
             res.send(user)
         } else {
@@ -34,7 +34,7 @@ router.get('/:id', async (req,res) =>{
 })
 
 router.get('/:userid/playing', async( req, res) => {
-        const userObject = await UserProfileModel
+        const userObject = await UserModel
             .findById({ _id : req.params.userid })
             .populate("currentGames")
         const list= userObject.currentGames
@@ -60,7 +60,7 @@ router.patch('/:userid/playing/', async (req, res) => {
     try {
         const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
+        const userObject = await UserModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.currentGames.includes(gameObject._id)) {
@@ -86,7 +86,7 @@ router.delete('/:userid/playing/', async (req, res) => {
     try {
         const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
+        const userObject = await UserModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.currentGames.includes(gameObject._id)) {
@@ -112,7 +112,7 @@ router.delete('/:userid/playing/', async (req, res) => {
 router.get('/:userid/completed', async( req, res) => {
     // try {
         
-        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
+        const userObject = await UserModel.findById({ _id : req.params.userid })
         .populate("completedGames")
         const sendObj=userObject.completedGames
         // const sendy = sendObj.map(async(id, index) => (
@@ -130,7 +130,7 @@ router.patch('/:userid/completed/', async (req, res) => {
     try {
         const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
+        const userObject = await UserModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.completedGames.includes(gameObject._id)) {
@@ -158,7 +158,7 @@ router.delete('/:userid/completed/', async (req, res) => {
     try {
         const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
+        const userObject = await UserModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.completedGames.includes(gameObject._id)) {
