@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-const Navbar = () => {
+const Navbar = ({activeUser}) => {
   return (
 <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark bg-gradient">
   <div className="container-fluid">
@@ -17,9 +17,20 @@ const Navbar = () => {
         <li className="nav-item">
           <Link className="nav-link text-light" to="/games">Games</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link text-light" to="/users">Profile</Link>
-        </li>
+        {/* {activeUser && (
+          <li className="nav-item">
+            <Link className="nav-link text-light" to="/users/1">Profile</Link>
+          </li>
+        )} */}
+        {activeUser ? (
+          <li className="nav-item">
+            <Link className="nav-link text-light" to="/my_profile">Profile</Link>
+          </li>
+        ) : (
+          <li className="nav-item">
+            <Link className="nav-link text-light" to="/users/login">Login</Link>
+          </li>
+        )}
       </ul>
     </div>
   </div>

@@ -7,8 +7,10 @@ import { RatingModel } from "../models/RatingModel.js"
 const router = express.Router()
 
 // Get all users
-router.get('/', async (req, res) => res.send(await UserProfileModel.find()
-))
+router.get('/', async (req, res) => {
+    const userobj = await UserProfileModel.findOne()
+    res.send(userobj)
+})
 
 // Return specified user with ID
 router.get('/:id', async (req,res) =>{
@@ -27,9 +29,9 @@ router.get('/:id', async (req,res) =>{
 
 })
 
-router.get('/playing', async( req, res) => {
+router.get('/:userid/playing', async( req, res) => {
         const userObject = await UserProfileModel
-            .findOne({ username : "Testuser" })
+            .findById({ _id : req.params.userid })
             .populate("currentGames")
         const list= userObject.currentGames
         res.json(list)
@@ -38,11 +40,11 @@ router.get('/playing', async( req, res) => {
 
 
 // Add game to users playing list
-router.patch('/playing/', async (req, res) => {
+router.patch('/:userid/playing/', async (req, res) => {
     try {
         const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findOne()
+        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.currentGames.includes(gameObject._id)) {
@@ -64,11 +66,11 @@ router.patch('/playing/', async (req, res) => {
 })
 
 // Remove game from current games
-router.delete('/playing/', async (req, res) => {
+router.delete('/:userid/playing/', async (req, res) => {
     try {
-        const { userId , gameId } = req.body
+        const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findOne({ _id: userId })
+        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.currentGames.includes(gameObject._id)) {
@@ -91,10 +93,10 @@ router.delete('/playing/', async (req, res) => {
 })
 
 // get all completed games 
-router.get('/completed', async( req, res) => {
+router.get('/:userid/completed', async( req, res) => {
     // try {
         
-        const userObject = await UserProfileModel.findOne({ username : "Testuser" })
+        const userObject = await UserProfileModel.findById({ _id : req.params.userid }).populate("completedGames")
         const sendObj=userObject.completedGames
         // const sendy = sendObj.map(async(id, index) => (
         //     await GameModel.findById(id)
@@ -107,11 +109,11 @@ router.get('/completed', async( req, res) => {
 )
 
 // Add game to completed list (checks currently playing and removes)
-router.patch('/completed/', async (req, res) => {
+router.patch('/:userid/completed/', async (req, res) => {
     try {
-        const { userId , gameId } = req.body
+        const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findById({ _id: userId })
+        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.completedGames.includes(gameObject._id)) {
@@ -135,11 +137,11 @@ router.patch('/completed/', async (req, res) => {
 })
 
 // Removed from completed games
-router.delete('/completed/', async (req, res) => {
+router.delete('/:userid/completed/', async (req, res) => {
     try {
-        const { userId , gameId } = req.body
+        const { gameId } = req.body
         const gameObject = await GameModel.findById({ _id : gameId })
-        const userObject = await UserProfileModel.findOne({ _id: userId })
+        const userObject = await UserProfileModel.findById({ _id : req.params.userid })
         if (gameObject) {
             if (userObject) {
                 if (userObject.completedGames.includes(gameObject._id)) {
