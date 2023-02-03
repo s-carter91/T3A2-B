@@ -15,7 +15,7 @@ const router = express.Router()
 // }
 
 // check who is logged in
-router.get('/auth/loggedin', jwtVerify,async (req, res) => {
+router.get('/loggedin', jwtVerify,async (req, res) => {
     console.log(req.user)
     res.send(req.user)
 })

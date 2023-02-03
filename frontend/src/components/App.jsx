@@ -24,8 +24,7 @@ const App = () => {
   const ShowGameWrapper = () => {
     const { game_id } = useParams()
     const game_card = games.find(game => game._id == game_id)
-    return game_card ? <GameDetails game={game_card} addGame={addGame} 
-      activeUser={activeUser}  
+    return game_card ? <GameDetails game={game_card} addGame={addGame} activeUser={activeUser}  
     /> : <h4>Game not found!</h4>
 }
 
@@ -57,7 +56,7 @@ useEffect(() => {
     // set usersCurrentGamesState
   },[])
 
-  const addGame = async (game_id) => {
+  const addGame = async (gameId) => {
     /// DEBUG
     /// ADD USER_ID TO /USERS/
     let response = await fetch(`http://localhost:4002/users/${activeUser._id}/playing`,{ 
@@ -66,9 +65,10 @@ useEffect(() => {
         Accept: 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({game_id: game_id})
+        body: JSON.stringify({ gameId: gameId})
     })
     const data = await response.json()
+    console.log(data)
     setUsersCurrentGames([...usersCurrentGamesState, data])
   }
 
@@ -83,7 +83,7 @@ useEffect(() => {
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/my_profile' element={<Profile activeUser={activeUser} />} />
       <Route path='/games/:game_id' element={<ShowGameWrapper />} />
-      <Route path='/games/:game_Id/addreview' element={<NewReview />} />
+      <Route path='/games/:game_Id/addreview' element={<NewReview activeUser={activeUser}/>} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes> 
     </>

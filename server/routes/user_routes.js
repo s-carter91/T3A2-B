@@ -68,7 +68,7 @@ router.patch('/:userid/playing/', async (req, res) => {
                 } else {
                     userObject.currentGames.push(gameObject)
                     await userObject.save()
-                    res.status(201).send(`${gameObject.name} has been added to your current games list`)
+                    res.status(201).send(gameObject)
                 }
             } else {
                 res.status(404).send({ error: 'User not found' })

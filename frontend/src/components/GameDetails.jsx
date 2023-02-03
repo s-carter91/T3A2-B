@@ -1,16 +1,31 @@
-import React,  { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import NewRating from './NewRating'
 
-const GameDetails = ({ game, addGame }) => {
+const GameDetails = ({ game, addGame, activeUser }) => {
     const {game_id} = useParams()
     const [ inPlaying, setPlaying ] = useState(false)
+    const [ rating, setRating ] = useState([])
     
 
     const handleSubmit = () => {
         addGame(game_id)
         setPlaying(true)
     }
+
+
+
+useEffect(() => {
+    async function getRatings() {
+        const res = await fetch(`http://localhost:4002/ratings/${game_id}`)
+        const data = await res.json()
+        console.log(data)
+        setRating(data)
+        }
+        getRatings()
+    // fetch the "games"
+    // set the gamesState to that list of games
+  },[])
 
   return (
     <>
@@ -30,19 +45,28 @@ const GameDetails = ({ game, addGame }) => {
                                 <input ></input>
                                 <button type="submit" className="addGame btn btn-outline-primary" >Add to my games</button>
                             </form> */}
+                            <div className='p-1'>
                             {inPlaying ? 
                                 <button className='btn-success btn'>✔️</button> :
                                 <button type="button" onClick={handleSubmit} className="addGame btn btn-outline-primary" >Add to my games</button>
                                 }
+                            </div>
+                            <div className='p-1'>
+                                <Link to={`/games/${game_id}/addreview`}>
+                                    <button type="button" className="btn btn-outline-primary" >Post a Review</button>
+                                </Link>
+                            </div>
+                            <div>
+                                <p >Rate the {game.name}</p>
+                                <NewRating activeUser={activeUser}/>
+                            </div>
                             
                         </div>
                         <div className="col-sm-7">
                             <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
                         </div>
-                        <div className='bg-secondary '>
-                            <p className='text-center'>Rate the {game.name}</p>
-                            <NewRating />
-                        </div>
+
+                        
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">
