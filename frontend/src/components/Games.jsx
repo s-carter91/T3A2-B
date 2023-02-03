@@ -1,43 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 import { Link } from 'react-router-dom'
 import "./games.css";
-// import Game from './GameCard'
-
-
-// const URL = "http://localhost:4002/games";
-
-// const Games = () => {
-//     const [games, setGames] = useState();
-    
-//     useEffect(() => {
-//         async function fetchGames() {
-//             const res = await fetch(URL)
-//             const data = await res.json()
-//             setGames(data)
-
-//         }
-//         fetchGames()
-//         }, []);
-
-        
-
-
-//         return(
-//             <div>
-//             <div>
-//             <ul>
-//                 {games 
-//                 && games.map((game, index) => (
-//                     <div key={index}>
-//                         <Game game={game}/>
-//                     </div>
-//                 ))}
-//             </ul>    
-//         </div>    
-//             </div>
-//         )
-
-// }
         
 const Games = ( { games } ) => {
 
