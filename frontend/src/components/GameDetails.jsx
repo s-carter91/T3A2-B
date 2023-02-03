@@ -24,9 +24,7 @@ const GameDetails = ({ game, addGame }) => {
                         <div className="col-sm-5">
                             <h1 className="font-weigh-light text-center">{game.name}</h1>
                             <p className='mt-4 text-center'>
-                                Add game description to game 
-                                For years, humans on this earth have searched far and wide for the best game cataloguing website that uses 
-                                the MERN Stack. Look no further than BackloGGo, the superior gaming catalogue site built using the MERN stack.
+                            {game.description}
                             </p>
                             {/* <form onSubmit={handleSubmit}>
                                 <input ></input>
