@@ -10,7 +10,7 @@ import NewReview from './NewReview'
 
 const App = () => {
   const nav = useNavigate()
-  const [games, setGames] = useState([])
+  const [ games, setGames ] = useState([])
   const [ reviews, setReview ] = useState([])
   const [ err, setErr ] = useState(false)
   const [usersCurrentGamesState, setUsersCurrentGames] = useState([])

@@ -1,12 +1,14 @@
 import mongoose from "mongoose"
 
-const userProfileSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {type: String, required: true},
+    password: {type: String, required: true},
+    name: {type: String, required: true},
     currentGames: [{ type: mongoose.ObjectId, ref: 'Game' }],
     completedGames: [{ type: mongoose.ObjectId, ref: 'Game' }]
 })
 
-const UserProfileModel = mongoose.model('UserProfile', userProfileSchema)
+const UserModel = mongoose.model('User', userSchema)
 
 
-export { UserProfileModel }
+export { UserModel }

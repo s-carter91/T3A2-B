@@ -1,8 +1,10 @@
 import express from "express"
-import { UserProfileModel } from '../models/UserModel.js'
+import { UserModel } from '../models/UserModel.js'
 import { GameModel } from "../models/GameModel.js"
 import { ReviewModel } from "../models/ReviewModel.js"
 import { RatingModel } from "../models/RatingModel.js"
+import jwt from 'jsonwebtoken'
+import jwtVerify from "../middleware/auth.js"
 
 const router = express.Router()
 
@@ -38,6 +40,18 @@ router.get('/:userid/playing', async( req, res) => {
     }
 )
 
+// router.get('/who_am_i', jwtVerify,async (req, res) => {
+//     console.log(req.user)
+//     res.send(req.user)
+// })
+
+// router.post('/signup', async( req, res) => {
+//     const jwtobj = jwt.sign({
+//         id: "63db5a04d111a98f4568a662"
+//     }, "secreetKey")
+//     console.log(jwtobj)
+//     res.send(jwtobj)
+// })
 
 // Add game to users playing list
 router.patch('/:userid/playing/', async (req, res) => {
@@ -102,7 +116,7 @@ router.get('/:userid/completed', async( req, res) => {
         //     await GameModel.findById(id)
         //     ))
             // console.log(sendy)
-            res.send(sendObj)
+        res.send(sendObj)
     // } catch (err){
     //     res.status(500).send({ error: err.message })
     }

@@ -55,7 +55,7 @@ const Home = () => {
                                             <button className="bi bi-star">  &#9734;</button>
                                             <button className="bi bi-star">  &#9734;</button>
                                             <button className="bi bi-star">  &#9734;</button>  */}
-                                            <NewRating />
+                                            {/* <NewRating /> */}
                                         </div>
                                         <div className='col bg-secondary m-1'>
                                             {CardItem(carddata.gamesCard[1])}

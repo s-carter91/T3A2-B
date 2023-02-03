@@ -1,9 +1,11 @@
 import React,  { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import NewRating from './NewRating'
 
 const GameDetails = ({ game, addGame }) => {
     const {game_id} = useParams()
     const [ inPlaying, setPlaying ] = useState(false)
+    
 
     const handleSubmit = () => {
         addGame(game_id)
@@ -37,7 +39,11 @@ const GameDetails = ({ game, addGame }) => {
                             
                         </div>
                         <div className="col-sm-7">
-                        <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
+                            <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
+                        </div>
+                        <div className='bg-secondary '>
+                            <p className='text-center'>Rate the {game.name}</p>
+                            <NewRating />
                         </div>
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
