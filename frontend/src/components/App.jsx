@@ -6,6 +6,9 @@ import Games from './Games'
 import Home from './Home'
 import Profile from './Profile'
 import NewReview from './NewReview'
+import SignUp from './SignUp'
+import Login from './Login'
+
 
 
 const App = () => {
@@ -75,6 +78,8 @@ useEffect(() => {
     {err && alert(err)}
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<SignUp />} />
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/my_profile' element={<Profile activeUser={activeUser} />} />
       <Route path='/games/:game_id' element={<ShowGameWrapper />} />
