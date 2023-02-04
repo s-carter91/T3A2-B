@@ -46,6 +46,7 @@ const platforms = [
 const plats = await PlatformModel.insertMany(platforms)
 console.log('Updated platforms')
 
+//Seeding games
 const allgames = [{
     name: 'God of War',
     genre: gens[1],
