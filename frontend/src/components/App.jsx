@@ -9,6 +9,7 @@ import NewReview from './NewReview'
 import SignUp from './SignUp'
 import Login from './Login'
 import Logout from './Logout'
+import Footer from './Footer'
 
 
 
@@ -107,7 +108,8 @@ const App = () => {
       <Route path='/games/:game_id' element={<ShowGameWrapper />} />
       <Route path='/games/:game_Id/addreview' element={<NewReview activeUser={activeUser}/>} />
       <Route path='*' element={<h4>Page not found!</h4>} />
-    </Routes> 
+    </Routes>
+    <Footer />
     </>
   )
 }
