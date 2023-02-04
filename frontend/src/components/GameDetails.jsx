@@ -5,23 +5,28 @@ import NewRating from './NewRating'
 const GameDetails = ({ game, addGame, activeUser }) => {
     const {game_id} = useParams()
     const [ inPlaying, setPlaying ] = useState(false)
-    const [ rating, setRating ] = useState([])
+    const [ rating, setRating ] = useState('')
     
 
     const handleSubmit = () => {
         addGame(game_id)
-        setPlaying(true)
         console.log('truers')
+        setPlaying(true)
+        
     }
 
 
+    
 
 useEffect(() => {
     async function getRatings() {
-        const res = await fetch(`http://localhost:4002/ratings/${game_id}`)
+        const res = await fetch(`http://localhost:4002/ratings/stars/${game_id}`)
         const data = await res.json()
         console.log(data)
-        setRating(data)
+        const avg =
+            data.reduce((sum, curr) => sum + Number(curr), 0) /
+            data.length
+        setRating(avg.toFixed(1))
         }
         getRatings()
     // fetch the "games"
@@ -40,28 +45,38 @@ useEffect(() => {
                         <div className="col-sm-5">
                             <h1 className="font-weigh-light text-center">{game.name}</h1>
                             <p className='mt-4 text-center'>
-                            {game.description}
+                                {game.description}
                             </p>
                             {/* <form onSubmit={handleSubmit}>
                                 <input ></input>
                                 <button type="submit" className="addGame btn btn-outline-primary" >Add to my games</button>
                             </form> */}
+                            {activeUser ?
+                            <>
                             <div className='p-1'>
                             {inPlaying ? 
                                 <button className='btn-success btn'>✔️</button> :
                                 <button type="button" onClick={handleSubmit} className="addGame btn btn-outline-primary" >Add to my games</button>
                                 }
                             </div>
+                            
                             <div className='p-1'>
                                 <Link to={`/games/${game_id}/addreview`}>
                                     <button type="button" className="btn btn-outline-primary" >Post a Review</button>
                                 </Link>
                             </div>
+                            
                             <div>
                                 <p >Rate the {game.name}</p>
                                 <NewRating activeUser={activeUser}/>
                             </div>
-                            
+                            </> :
+                            <>
+                            </>
+                            }
+                            <div>
+                                <p>{game.name} has an average rating of {rating} &#9734; based off site users</p>
+                            </div>
                         </div>
                         <div className="col-sm-7">
                             <img src= {game.image} className="img-fluid rounded" alt="dummy"/>

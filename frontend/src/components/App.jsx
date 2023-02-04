@@ -8,7 +8,7 @@ import Profile from './Profile'
 import NewReview from './NewReview'
 import SignUp from './SignUp'
 import Login from './Login'
-// import Logout from './Logout'
+import Logout from './Logout'
 
 
 
@@ -74,7 +74,7 @@ const App = () => {
           }
       }
       checkForToken()
-  }, [])
+  }, [usersCurrentGamesState])
   
 
   const addGame = async (gameId) => {
@@ -95,12 +95,13 @@ const App = () => {
 
   return (
     <>
-    <Navbar activeUser={activeUser} setToken={setToken}/>
+    <Navbar activeUser={activeUser} />
     {err && alert(err)}
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login setActiveUser={setActiveUser} setToken={setToken}/>} />
       <Route path='/signup' element={<SignUp setActiveUser={setActiveUser} setToken={setToken}/>} />
+      <Route path='/logout' element={<Logout setToken={setToken} setActiveUser={setActiveUser} nav ={nav}/>} />
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/my_profile' element={<Profile activeUser={activeUser} />} />
       <Route path='/games/:game_id' element={<ShowGameWrapper />} />

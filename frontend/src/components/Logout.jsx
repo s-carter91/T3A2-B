@@ -1,21 +1,27 @@
-// import React from "react"
-// import { useNavigate } from "react-router-dom"
+import React from "react"
 
-// const nav = useNavigate()
 
-// const Logout = ({ setToken }) => {
+
+const Logout = ({ setToken, setActiveUser, nav }) => {
+
     
-    
-//     const logOut = () => {
-//         localStorage.removeItem('token')
-//         setToken(null)
-//         nav('/')
-//     }
+    const logOut = () => {
+        localStorage.removeItem('token')
+        setToken(null)
+        setActiveUser(null)
+        nav('/')
+    }
+    const no = () =>{
+        nav(-1)
+    }
 
-//     return (
-//         <div>
-//             <p>Hello World</p>
-//         </div>
-//     )
-// }
-// export default Logout
+
+    return (
+        <>
+            <p>Are you sure you want to log out?</p>
+            <button onClick={logOut}>Yes</button>
+            <button onClick={no}>No</button>
+        </>
+    )
+}
+export default Logout

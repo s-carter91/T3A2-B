@@ -3,13 +3,8 @@ import { Link } from "react-router-dom"
 
 
 
-const Navbar = ({ activeUser, setToken, setActiveUser }) => {
+const Navbar = ({ activeUser }) => {
 
-  const logOut = () => {
-    localStorage.removeItem('token')
-    // setToken(null)
-    // setActiveUser('')
-}
   return (
 <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark bg-gradient">
   <div className="container-fluid">
@@ -36,7 +31,7 @@ const Navbar = ({ activeUser, setToken, setActiveUser }) => {
               <Link className="nav-link text-light" to="/my_profile">Profile</Link>
             </li>
             <li>
-              <Link className="nav-link text-light" onClick={logOut()} to="/">Logout</Link>
+              <Link className="nav-link text-light" to="/logout">Logout</Link>
             </li>
           </>
         ) : (
