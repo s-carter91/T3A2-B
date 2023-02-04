@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
-const HOST_NAME = 'http://localhost:4002'
 
 const SignUp = ({setActiveUser, setToken}) => {
     const nav = useNavigate()
@@ -10,17 +8,6 @@ const SignUp = ({setActiveUser, setToken}) => {
     const [username, setUsername] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
-
-    // const axiospost = () => {
-    // axios.post(HOST_NAME+'/auth/signup', {
-    //     username: username,
-    //     name: name,
-    //     password: password
-    // }).then (res => {
-    //     console.log(res.data.token)
-
-    //     // console.log(data)
-    // })}
 
     const createUser = async() => {
         const newUser = {

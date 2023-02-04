@@ -34,7 +34,6 @@ router.get('/stars/:gameId/', async (req, res) => {
                 ratings.map(obj => {
                     list.push(obj.stars)
                 })
-                console.log(list)
                 res.send(list)
                 
             } else {

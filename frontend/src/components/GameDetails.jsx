@@ -5,7 +5,7 @@ import NewRating from './NewRating'
 const GameDetails = ({ game, addGame, activeUser }) => {
     const {game_id} = useParams()
     const [ inPlaying, setPlaying ] = useState(false)
-    const [ rating, setRating ] = useState('')
+    const [ rating, setRating ] = useState(null)
     
 
     const handleSubmit = () => {
@@ -22,12 +22,16 @@ useEffect(() => {
     async function getRatings() {
         const res = await fetch(`http://localhost:4002/ratings/stars/${game_id}`)
         const data = await res.json()
-        console.log(data)
-        const avg =
-            data.reduce((sum, curr) => sum + Number(curr), 0) /
-            data.length
-        setRating(avg.toFixed(1))
+        if (data.length > 0) {
+            console.log(data)
+            const avg =
+                data.reduce((sum, curr) => sum + Number(curr), 0) /
+                data.length
+            setRating(avg.toFixed(1))
+        } else {
+
         }
+    }
         getRatings()
     // fetch the "games"
     // set the gamesState to that list of games
@@ -74,13 +78,16 @@ useEffect(() => {
                             <>
                             </>
                             }
-                            <div>
-                                <p>{game.name} has an average rating of {rating} &#9734; based off site users</p>
+                            <div className='text-warning'>
+                            {rating ?
+                                <p>{game.name} has an average rating of {rating} &#9734; based off site users</p> :
+                                <p>{game.name} currently has no ratings from users on the site. Be the first by sending a rating above!</p>
+                            }
                             </div>
-                        </div>
-                        <div className="col-sm-7">
-                            <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
-                        </div>
+                            </div>
+                            <div className="col-sm-7">
+                                <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
+                            </div>
 
                         
                                 <div className="row">

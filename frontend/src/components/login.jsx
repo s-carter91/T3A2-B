@@ -46,7 +46,7 @@ const Login = ({setActiveUser, setToken}) => {
     setActiveUser(data.user)
     localStorage.setItem('token', data.token)
     setToken(data.token)
-    nav('/')
+    nav(-1)
     }
 
 
