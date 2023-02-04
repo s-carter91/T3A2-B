@@ -59,7 +59,7 @@ const GameDetails = ({ game, addGame, activeUser, setGameName }) => {
                     <div className="row px-4 my-5">
                         <div className="col-sm-5">
                             <h1 className="font-weigh-light text-center">{game.name}</h1>
-                            <p className='mt-4 text-center'>
+                            <p className='mt-4 text-start'>
                                 {game.description}
                             </p>
                             {/* <form onSubmit={handleSubmit}>
@@ -129,11 +129,7 @@ const GameDetails = ({ game, addGame, activeUser, setGameName }) => {
                 </div>
 
             </main>
-        <footer className="py-5 my-5 bg-dark">
-            <div className="container px-4">
-                <p className="text-center text-white">Copyright &copy; BackloGGo 2023</p>
-            </div>
-        </footer>
+        
     </div>
     </>
   )}

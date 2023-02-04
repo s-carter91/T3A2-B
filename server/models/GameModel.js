@@ -5,7 +5,6 @@ const gameSchema = new mongoose.Schema({
     genre: { type: mongoose.ObjectId, ref: 'Genre' },
     description: {type: String, required: true} ,
     platform: [{ type: mongoose.ObjectId, ref: 'Platform' }],
-    multiplayer: { type: Boolean, required: true},
     image : { type: String, required: true}
 })
 
