@@ -31,25 +31,6 @@ const SignUp = ({setActiveUser, setToken}) => {
     nav('/')
     }
 
-    // const postUser =async () => {
-    //     const newUser = {
-    //         username: username,
-    //         name: name,
-    //         password: password
-    //     }
-
-    //     const insertedUser = await fetch('https://localhost:4002/users/', {
-    //     method: 'POST',
-    //     headers: {
-    //         Accept: 'application/json',
-    //         'Content-Type': 'application/json'},
-    //     body: JSON.stringify(newUser)
-
-    // })
-    // const data = await insertedUser.json()
-    // console.log(data)
-    // nav('/home')
-    // }
     const handleSubmit = (event) => {
         event.preventDefault() 
         createUser()
