@@ -18,9 +18,10 @@ router.get('/:gameid', async (req, res) => {
     try { 
         const game = await GameModel.findById(req.params.gameid)
         if (game) {
-            const reviews = await ReviewModel.find({ gameId: req.params.gameid }).populate( 'gameId' )
+            const reviews = await ReviewModel.find({ gameId: req.params.gameid })
             if (reviews) {
-                res.send(reviews)
+                console.log(reviews)
+                res.send(reviews)                
             } else {
                 res.status(404).send({ error: 'that game does not have any reviews' })
             }
@@ -38,16 +39,23 @@ router.post('/', async (req, res) => {
         const { userId, gameId, content } = req.body
         // const gameId = await GameModel.findById({ gameId: gameId })
         const newReview = { userId, gameId, content }
-
-        const insertedReview = await ReviewModel.create(newReview)
-        res.status(201).send(insertedReview)
+        const checkReview = await ReviewModel.find({ gameId: gameId, userId: userId })
+        if (checkReview) {
+            const updateReview = await ReviewModel.findByIdAndUpdate( checkReview._id , { content: content })
+            res.status(409).send('Already had reviewed game. Updated existing review!')
+        } else {
+            const insertedReview = await ReviewModel.create(newReview)
+            const returnedReview = await ReviewModel.findById(insertedReview._id)
+            .populate('gameId')
+            res.status(201).send(returnedReview)
+        }
     } catch (err){
         res.status(500).send({ error: err.message})
     }
 })
 
 //Edit a review
-router.put('/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
     const { userId, gameId, content } = req.body
     const newReview = { userId, gameId, content }
 

@@ -28,6 +28,7 @@ router.post('/login', async( req, res) => {
         .findOne({ username : username, password : password })
         .populate("currentGames")
         .populate("completedGames")
+        .select('-password')
     if (userObject) {
             const jwtobj = jwt.sign({
                 id: userObject._id
@@ -49,7 +50,11 @@ router.post('/signup', async( req, res) => {
         } else {
             const newUserObject = { username, password, name }
             const createNewUser = await UserModel.create(newUserObject)
-            const returnedNewUser = await UserModel.findById(createNewUser._id).select('-password')
+            const returnedNewUser = await UserModel
+                .findById(createNewUser._id)
+                .select('-password')
+                .populate("currentGames")
+                .populate("completedGames")
             const jwtobj = jwt.sign({
                 id: createNewUser._id
             }, process.env.JWT_SECRET_KEY)

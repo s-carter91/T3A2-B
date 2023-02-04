@@ -16,19 +16,6 @@ const Login = ({setActiveUser, setToken}) => {
     }
 
 
-// const getHeader = async () => {
-//         /// DEBUG
-//         /// ADD USER_ID TO /USERS/
-//         let response = await fetch(`http://localhost:4002/users/${activeUser._id}/playing`,{ 
-//             method: 'GET',
-//             headers: {
-//                 authorization: "key",
-//                 Accept: 'application/json'
-//             },
-            
-//         })
-//         const data = await response.json()
-//       }
     const loginUser = async() => {
         const loginDetails = {
             username: username,
@@ -101,6 +88,12 @@ const Login = ({setActiveUser, setToken}) => {
     </>
 
 
+
+  )
+}
+
+export default Login
+
     // <>
     // <form className="login" onSubmit={handleSubmit}>
     //     <h3>Log in</h3>
@@ -122,7 +115,3 @@ const Login = ({setActiveUser, setToken}) => {
     //     <button>Log in</button>
     // </form>
     // </>
-  )
-}
-
-export default Login

@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import activeUser from './App.jsx'
 
-const NewReview = () => {
+const NewReview = ({ setReloadReview, activeUser, games}) => {
     const nav = useNavigate()
 
     const { game_Id } = useParams()
-    // const gameId= game_Id
-    const [ reviews, setReview ] = useState([])
     const [ content, setContent ] = useState('')
+    const [ thanksForReview, setThanksForReview] = useState(false)
     const userId = activeUser
-    console.log(userId)
-
+    const thisGame = games.find(game => game._id === game_Id)
 // 
 const addReview = async (game, content, user) => { 
     // const id = reviews.length
@@ -29,16 +26,20 @@ const addReview = async (game, content, user) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(newReview)
-      })
-      const data = await insertedReview.json()
-      setReview([...reviews, data])
-      nav(`/games`)
+    })
+    // const data = await insertedReview.json() 
+    console.log(insertedReview)
+    setReloadReview(true)
+    setThanksForReview(true)
+    setTimeout(() => {
+        nav(-1)
+    }, 1000);
   }
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
         addReview(game_Id, content, userId)
-        console.log(game_Id, userId, content)
+        // console.log(game_Id, userId, content)
     }
 
     // Cancel button to nav back to games page
@@ -48,14 +49,19 @@ const addReview = async (game, content, user) => {
 
     return (
         <>
-            <h3>Review for {`${game_Id}`}</h3>
+            <h3 className='text-center'>Review for {thisGame.name}</h3>
             <form className="container" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Review</label>
-                    <input value={content} onChange={evt => setContent(evt.target.value)} className="form-control" type="text"></input>
-                    {content.length == 0 && <span className="alert-warning"> Please enter content</span>}
+                <div className="form-group d-flex row justify-content-center">
+                    {/* <div className='w-25'> */}
+                        <img src={thisGame.image} alt={thisGame.name + 'image'}className='w-50 p-4'></img>
+                    {/* </div> */}
+                    <textarea value={content} onChange={evt => setContent(evt.target.value)} className="form-control row-5" type="text"></textarea>
+                    {content.length == 0 && <span className="alert-warning text-danger">Review Can't Be Empty</span>}
+
                 
-                    <button className="btn btn-success" type="submit">Submit Review</button>
+                    <button className="btn btn-success m-3" type="submit">Submit Review</button>
+                    {thanksForReview ? <p>Thank you for the review</p>:
+                    <></>}
                     <button className="btn btn-success" type="button" onClick={cancelButton}>Cancel</button>
                 </div>
             </form>

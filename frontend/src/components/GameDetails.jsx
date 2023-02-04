@@ -2,40 +2,51 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import NewRating from './NewRating'
 
-const GameDetails = ({ game, addGame, activeUser }) => {
+const GameDetails = ({ game, addGame, activeUser, setGameName }) => {
     const {game_id} = useParams()
     const [ inPlaying, setPlaying ] = useState(false)
     const [ rating, setRating ] = useState(null)
-    
+    const [ reloadRating, setReloadRating ] = useState(null)
+    const [ displayReview, setDisplayReview ] = useState(null)
 
     const handleSubmit = () => {
         addGame(game_id)
-        console.log('truers')
         setPlaying(true)
         
     }
 
-
-    
-
-useEffect(() => {
-    async function getRatings() {
-        const res = await fetch(`http://localhost:4002/ratings/stars/${game_id}`)
-        const data = await res.json()
-        if (data.length > 0) {
-            console.log(data)
-            const avg =
-                data.reduce((sum, curr) => sum + Number(curr), 0) /
-                data.length
-            setRating(avg.toFixed(1))
-        } else {
-
+    // Fetches review to display on page
+    useEffect(() => {
+        async function getReview() {
+            const res = await fetch(`http://localhost:4002/reviews/${game_id}`)
+            const data = await res.json()
+            if (data.length>0) {
+                setDisplayReview(data[0])          
+            }
+            else {
+                console.log("no reviews")
+            }
         }
-    }
-        getRatings()
-    // fetch the "games"
-    // set the gamesState to that list of games
-  },[])
+        getReview()
+    },[])
+    
+    // Fetches ratings (if there are any) and provides the average rating of a game
+    useEffect(() => {
+        async function getRatings() {
+            const res = await fetch(`http://localhost:4002/ratings/stars/${game_id}`)
+            const data = await res.json()
+            console.log(data + ' this is the ratings array')
+            if (data.length > 0) {
+                const avg =
+                    data.reduce((sum, curr) => sum + Number(curr), 0) /
+                    data.length
+                setRating(avg.toFixed(1))
+            } else {
+
+            }
+        }
+            getRatings()
+    },[reloadRating])
 
   return (
     <>
@@ -71,8 +82,8 @@ useEffect(() => {
                             </div>
                             
                             <div>
-                                <p >Rate the {game.name}</p>
-                                <NewRating activeUser={activeUser}/>
+                                <h4 className='pt-1'>Rate {game.name}</h4>
+                                <NewRating activeUser={activeUser} setReloadRating={setReloadRating}/>
                             </div>
                             </> :
                             <>
@@ -93,7 +104,9 @@ useEffect(() => {
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">
-                                    {game.rating}
+                                        <h3>Reviews of {game.name} by other users on BackloGGo</h3>
+                                        {displayReview ? <p>{displayReview.content}</p>:
+                                        <p>This games doesn't have any reviews... yet!</p>}
                                     
                                     </div>
                                 </div>

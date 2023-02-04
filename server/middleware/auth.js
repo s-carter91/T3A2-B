@@ -10,7 +10,10 @@ const jwtVerify = async( req, res, next ) => {
         // .json({})
     } else {
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
-        req.user = await UserModel.findById(decoded.id)
+        req.user = await UserModel
+            .findById(decoded.id)
+            .populate("currentGames")
+            .populate("completedGames")
         next()
     }
 }

@@ -55,13 +55,15 @@ router.post('/:gameId', async (req, res) => {
         const game = await GameModel.findById(req.params.gameId)
         if (game) {
             const newRating = { gameId: req.params.gameId, stars, userId }
-            const checkForRating = await RatingModel.findOne({ gameId: req.params.gameId, userId: userId })
+            const checkForRating = await RatingModel.findOne({ gameId: req.params.gameId , userId: userId })
             if (checkForRating) {
-                res.status(409).send({ error: 'that user already has made a review for this game' })
+                await RatingModel.findByIdAndUpdate({ _id: checkForRating._id }, { stars: stars })
+                console.log(checkForRating._id, stars)
+                res.status(409).send({ error: 'user already has review for this game. Updating review now' })
             }
             else {
-            const insertedRating = await RatingModel.create(newRating)
-            res.status(201).send(insertedRating) //.populate ({ path: 'game', select: 'name' }))
+                const insertedRating = await RatingModel.create(newRating)
+                res.status(201).send(insertedRating) //.populate ({ path: 'game', select: 'name' }))
             }
         } else {
             res.send({ error: 'Game not found' })
