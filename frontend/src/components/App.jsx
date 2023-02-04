@@ -7,7 +7,7 @@ import Home from './Home'
 import Profile from './Profile'
 import NewReview from './NewReview'
 import SignUp from './SignUp'
-import Login from './Login'
+import Login from './LoginNew'
 import Logout from './Logout'
 
 
