@@ -7,7 +7,7 @@ import Home from './Home'
 import Profile from './Profile'
 import NewReview from './NewReview'
 import SignUp from './SignUp'
-import Login from './Login'
+import Login from './LoginNew'
 import Logout from './Logout'
 import Footer from './Footer'
 
@@ -15,19 +15,22 @@ import Footer from './Footer'
 
 const App = () => {
   const nav = useNavigate()
-  const [ games, setGames ] = useState([])
-  const [ reviews, setReview ] = useState([])
+  const [ games, setGames ] = useState([]) // getting all games
+  const [ gameName, setGameName] = useState() // getting game to pass to new review
+  // const [ reviews, setReview ] = useState([])
   const [ err, setErr ] = useState(false)
   const [ usersCurrentGamesState, setUsersCurrentGames] = useState([])
   // const [ users, setUsers] = useState('')
-  const [ activeUser, setActiveUser] = useState(null)
-  const [ token, setToken ] = useState(localStorage.getItem('token') || null)
+  const [ activeUser, setActiveUser] = useState(null) // getting the active user
+  const [ token, setToken ] = useState(localStorage.getItem('token') || null) 
+  const [ reloadReview, setReloadReview ] = useState(null)
+
 
 //HOC
   const ShowGameWrapper = () => {
     const { game_id } = useParams()
     const game_card = games.find(game => game._id == game_id)
-    return game_card ? <GameDetails game={game_card} addGame={addGame} activeUser={activeUser}  
+    return game_card ? <GameDetails game={game_card} addGame={addGame} activeUser={activeUser}
     /> : <h4>Game not found!</h4>
 }
 
@@ -62,8 +65,8 @@ const App = () => {
   useEffect(() => {
       async function checkForToken() {
           const token = localStorage.getItem('token') 
-          
-          if (token) {
+          console.log(`${token} this is hte token`)
+          if (token.length > 10) {
               const res = await fetch("http://localhost:4002/auth/loggedin", {
               headers: {
                   "Authorization": `Bearer ${token}`
@@ -106,7 +109,7 @@ const App = () => {
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/my_profile' element={<Profile activeUser={activeUser} />} />
       <Route path='/games/:game_id' element={<ShowGameWrapper />} />
-      <Route path='/games/:game_Id/addreview' element={<NewReview activeUser={activeUser}/>} />
+      <Route path='/games/:game_Id/addreview' element={<NewReview activeUser={activeUser} games={games} setReloadReview={setReloadReview}/>} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes>
     <Footer />

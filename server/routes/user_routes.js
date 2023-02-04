@@ -33,8 +33,7 @@ router.get('/:id', async (req,res) =>{
 
 })
 
-router.get('/playing', jwtVerify, async( req, res) => {
-        rereq.user
+router.get('/playing', async( req, res) => {
     req.header = {userId}
         const userObject = await UserModel
             .findById({ _id : userId })
