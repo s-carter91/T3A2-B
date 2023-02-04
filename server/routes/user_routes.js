@@ -33,9 +33,11 @@ router.get('/:id', async (req,res) =>{
 
 })
 
-router.get('/:userid/playing', async( req, res) => {
+router.get('/playing', jwtVerify, async( req, res) => {
+        rereq.user
+    req.header = {userId}
         const userObject = await UserModel
-            .findById({ _id : req.params.userid })
+            .findById({ _id : userId })
             .populate("currentGames")
         const list= userObject.currentGames
         res.json(list)

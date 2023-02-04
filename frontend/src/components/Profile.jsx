@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 const Profile = ({activeUser}) => {
+    console.log(activeUser.currentGames)
     const {_id, currentGames, completedGames } = activeUser
     console.log(currentGames)
     console.log(completedGames)
