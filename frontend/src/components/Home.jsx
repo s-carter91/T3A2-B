@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import CardItem  from './Card'
 import NewRating from './NewRating'
+import { Link } from 'react-router-dom'
 
 const carddata = {gamesCard: [
     {
@@ -34,10 +35,10 @@ const Home = () => {
                                 For years, humans on this earth have searched far and wide for the best game cataloguing website that uses 
                                 the MERN Stack. Look no further than BackloGGo, the superior gaming catalogue site built using the MERN stack.
                             </p>
-                            <button type="button" className="btn btn-outline-primary">Press me</button>
+        
                         </div>
                         <div className="col-sm-7">
-                        <img src="https://picsum.photos/900/400" className="img-fluid rounded" alt="dummy"/>
+                        <img src="https://static.vecteezy.com/system/resources/previews/002/144/780/original/gaming-banner-for-games-with-glitch-effect-neon-light-on-text-illustration-design-free-vector.jpg" className="img-fluid rounded" alt="dummy"/>
                         </div>
                         
                                 <div className="row">
@@ -48,8 +49,10 @@ const Home = () => {
                                 </div>
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
-                                        <div className='col bg-secondary m-1'>
-                                            {CardItem(carddata.gamesCard[0])}
+                                       <div className='col bg-secondary m-1'>
+                                             <Link to="/games">
+                                                {CardItem(carddata.gamesCard[0])}
+                                                </Link>
                                             {/* <button className="bi bi-star">  &#9734;</button>
                                             <button className="bi bi-star">  &#9734;</button>
                                             <button className="bi bi-star">  &#9734;</button>
@@ -58,7 +61,7 @@ const Home = () => {
                                             {/* <NewRating /> */}
                                         </div>
                                         <div className='col bg-secondary m-1'>
-                                            {CardItem(carddata.gamesCard[1])}
+                                            <Link to="/login">{CardItem(carddata.gamesCard[1])}</Link>
                                         </div> 
 
                                 </div>

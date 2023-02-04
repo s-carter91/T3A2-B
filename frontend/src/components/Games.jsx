@@ -8,16 +8,16 @@ const Games = ( { games } ) => {
   return (
     <>
         <h2>Games list</h2>
-        <div className="container d-flex">
+        <div className="container games">
         {/* <ul> */}
-        <div className="gamecard row">
+        <div className="gamecard d-flex justify-content-between flex-wrap my-6 py-4">
         {games.map((game, index) => (
-            <div key={index} className="gameli col">
+            <div key={index} className="gameli bg-dark m-1 ">
                 {/* <li key={index} className="game m-4" > */}
-                <div className="card col" >
+                <div className="card col text-center bg-dark text-white" >
                 <Link to={`/games/${game._id}`}>
                 <img src={game.image} alt='game' className="card-img-top" />
-                <h4>{game.name}</h4></Link>
+                <h5>{game.name}</h5></Link>
 </div>
                     
                 {/* </li> */}
