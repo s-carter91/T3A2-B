@@ -44,6 +44,7 @@ const Login = ({setActiveUser, setToken}) => {
     })
     const data = await loginUser.json()
     setActiveUser(data.user)
+    console.log(data)
     localStorage.setItem('token', data.token)
     setToken(data.token)
     nav(-1)

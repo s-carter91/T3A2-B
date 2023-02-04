@@ -26,6 +26,8 @@ router.post('/login', async( req, res) => {
     const { username, password } = req.body
     const userObject = await UserModel
         .findOne({ username : username, password : password })
+        .populate("currentGames")
+        .populate("completedGames")
     if (userObject) {
             const jwtobj = jwt.sign({
                 id: userObject._id
