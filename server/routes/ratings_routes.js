@@ -4,13 +4,13 @@ import { RatingModel } from "../models/RatingModel.js"
 
 const router = express.Router()
 
-// GET all ratings for a game
+// GET all rating objects for a game
 router.get('/:gameId/', async (req, res) => {
     try {
         const game = await GameModel.findById(req.params.gameId)
         if (game) {
             const ratings = await RatingModel.find({ gameId: req.params.gameId }).populate( 'gameId' ) // want this to return an array
-            if (ratings) {
+            if (ratings.length > 0) {
                 res.send(ratings)
             } else {
                 res.status(404).send({ error: 'that game does not have any reviews' })
@@ -23,6 +23,29 @@ router.get('/:gameId/', async (req, res) => {
     }
 })
 
+// GET all ratings starsin an array for a game
+router.get('/stars/:gameId/', async (req, res) => {
+    try {
+        const game = await GameModel.findById(req.params.gameId)
+        if (game) {
+            const ratings = await RatingModel.find({ gameId: req.params.gameId }).populate( 'gameId' ) // want this to return an array
+            if (ratings) {
+                const list = []
+                ratings.map(obj => {
+                    list.push(obj.stars)
+                })
+                res.send(list)
+                
+            } else {
+                res.status(404).send({ error: 'that game does not have any reviews' })
+            }
+        } else {
+            res.status(404).send({ error: 'that game does not exist' })
+        }
+    } catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
 
 
 // POST a rating

@@ -2,7 +2,8 @@ import express from 'express'
 import { UserModel } from '../models/UserModel.js'
 import jwt from 'jsonwebtoken'
 import jwtVerify from '../middleware/auth.js'
-
+import dotenv from 'dotenv'
+dotenv.config()
 
 const router = express.Router()
 
@@ -15,7 +16,7 @@ const router = express.Router()
 // }
 
 // check who is logged in
-router.get('/auth/loggedin', jwtVerify,async (req, res) => {
+router.get('/loggedin', jwtVerify,async (req, res) => {
     console.log(req.user)
     res.send(req.user)
 })
@@ -26,7 +27,7 @@ router.post('/login', async( req, res) => {
     const userObject = await UserModel
         .findOne({ username : username, password : password })
     if (userObject) {
-            jwtobj = jwt.sign({
+            const jwtobj = jwt.sign({
                 id: userObject._id
             }, process.env.JWT_SECRET_KEY)
             res.send({token:jwtobj, user: userObject})
@@ -45,11 +46,12 @@ router.post('/signup', async( req, res) => {
             res.status(401).send({ error: 'Username is already in use' })
         } else {
             const newUserObject = { username, password, name }
-            const insertNewUser = await UserModel.create(newUserObject)
+            const createNewUser = await UserModel.create(newUserObject)
+            const returnedNewUser = await UserModel.findById(createNewUser._id).select('-password')
             const jwtobj = jwt.sign({
-                id: insertNewUser._id
+                id: createNewUser._id
             }, process.env.JWT_SECRET_KEY)
-            res.send({token:jwtobj, user: insertNewUser})
+            res.send({token:jwtobj, user: returnedNewUser})
         }
     } catch (err){
         res.status(500).send({ error: err.message})

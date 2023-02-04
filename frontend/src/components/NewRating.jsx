@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Rate } from 'antd'
+import activeUser from './App.jsx'
 
 // HOW DO I ADD IN THE USER ID FROM STATE !
 // How do I export the 
@@ -11,7 +12,8 @@ const NewRating = ({ activeUser }) => {
     // const gameId= game_Id
 
     const [stars, setStars] = useState('')
-    const userId = '63db5a04d111a98f4568a662'
+    const userId = activeUser._id
+    console.log(userId)
 
     const addRating = async () => {
         const newRating = { 
@@ -40,11 +42,14 @@ const NewRating = ({ activeUser }) => {
             <form onSubmit={starsSubmit}>
                 <Rate 
                     defaultValue={stars}
+                    style={{backgroundColor : "darkgreen", marginBottom: "1vw"}}
                     onChange={(value) => {
                         setStars(value)
                     }}    
                 />
-                <button type='submit'>Send rating</button>
+                <div>
+                    <button type="button" className="btn btn-outline-primary my-1 mx-1" >Send Rating</button>
+                </div>
             </form>
         
         </>

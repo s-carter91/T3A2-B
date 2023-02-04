@@ -29,7 +29,8 @@ const genres = [
     {name: 'Racing'},
     {name: 'Sport'},
     {name: 'Puzzle'},
-    {name: 'MOBA'}
+    {name: 'MOBA'},
+    {name: 'shooter'}
 ]
 
 const gens = await GenreModel.insertMany(genres)
@@ -73,7 +74,7 @@ const allgames = [{
     name: "Grand Theft Auto V",
     description: "Rockstar Games went bigger, since their previous installment of the series. You get the complicated and realistic world-building from Liberty City of GTA4 in the setting of lively and diverse Los Santos, from an old fan favorite GTA San Andreas. 561 different vehicles (including every transport you can operate) and the amount is rising with every update.Simultaneous storytelling from three unique perspectives:Follow Michael, ex-criminal living his life of leisure away from the past, Franklin, a kid that seeks the better future, and Trevor, the exact past Michael is trying to run away from.",
     released: gens[1],
-    platform: plats[2],
+    platform: [plats[0], plats[1], plats[2]],
     multiplayer: false,
     image: "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
 
@@ -81,7 +82,7 @@ const allgames = [{
 {
     name: "payday-2",
     description: "The gang is back, and they have bigger and better plans. Objective based cooperative FPS became more complicated. The classic group of Hoxton, Dallas, Chains and Wolf got reinforcement, and now Payday Gang consists of 21 heisters, some of which are based on movie characters or even Youtubers. Players will be able to customize their own private arsenal, their masks, and skills, to complete the missions in their own way, be it stealthy sneak-in or full frontal assault. After completing missions, players will receive EXP points, money and a chance to get a special item that can be a gun modification, mask or a safe containing weapon skins. Payday 2 is a multiplayer game, meaning, that even during offline missions players will be followed by AI characters, whose loadouts, masks and perks can be customized as well. This game has been supported by the developers for many years, and amount of DLC speaks plenty of their dedication to the player base.",
-    released: gens[0],
+    released: gens[6],
     platform: plats[2],
     multiplayer: false,
     image: 'https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg',

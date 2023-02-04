@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import activeUser from './App.jsx'
 
 const NewReview = () => {
     const nav = useNavigate()
@@ -8,8 +9,10 @@ const NewReview = () => {
     // const gameId= game_Id
     const [ reviews, setReview ] = useState([])
     const [ content, setContent ] = useState('')
-    const userId = '63d14625a9c87120c737c106'
+    const userId = activeUser
+    console.log(userId)
 
+// 
 const addReview = async (game, content, user) => { 
     // const id = reviews.length
     // games.find((game => game.name === game))
@@ -32,13 +35,16 @@ const addReview = async (game, content, user) => {
       nav(`/games`)
   }
 
-
-
     const handleSubmit = (evt) => {
         evt.preventDefault()
         addReview(game_Id, content, userId)
         console.log(game_Id, userId, content)
     }
+
+    // Cancel button to nav back to games page
+    const cancelButton = () => {
+        nav(`/games/${game_Id}`)
+      }
 
     return (
         <>
@@ -50,6 +56,7 @@ const addReview = async (game, content, user) => {
                     {content.length == 0 && <span className="alert-warning"> Please enter content</span>}
                 
                     <button className="btn btn-success" type="submit">Submit Review</button>
+                    <button className="btn btn-success" type="button" onClick={cancelButton}>Cancel</button>
                 </div>
             </form>
         </>

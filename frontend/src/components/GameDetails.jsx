@@ -1,16 +1,41 @@
-import React,  { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import NewRating from './NewRating'
 
-const GameDetails = ({ game, addGame }) => {
+const GameDetails = ({ game, addGame, activeUser }) => {
     const {game_id} = useParams()
     const [ inPlaying, setPlaying ] = useState(false)
+    const [ rating, setRating ] = useState(null)
     
 
     const handleSubmit = () => {
         addGame(game_id)
+        console.log('truers')
         setPlaying(true)
+        
     }
+
+
+    
+
+useEffect(() => {
+    async function getRatings() {
+        const res = await fetch(`http://localhost:4002/ratings/stars/${game_id}`)
+        const data = await res.json()
+        if (data.length > 0) {
+            console.log(data)
+            const avg =
+                data.reduce((sum, curr) => sum + Number(curr), 0) /
+                data.length
+            setRating(avg.toFixed(1))
+        } else {
+
+        }
+    }
+        getRatings()
+    // fetch the "games"
+    // set the gamesState to that list of games
+  },[])
 
   return (
     <>
@@ -24,25 +49,47 @@ const GameDetails = ({ game, addGame }) => {
                         <div className="col-sm-5">
                             <h1 className="font-weigh-light text-center">{game.name}</h1>
                             <p className='mt-4 text-center'>
-                            {game.description}
+                                {game.description}
                             </p>
                             {/* <form onSubmit={handleSubmit}>
                                 <input ></input>
                                 <button type="submit" className="addGame btn btn-outline-primary" >Add to my games</button>
                             </form> */}
+                            {activeUser ?
+                            <>
+                            <div className='p-1'>
                             {inPlaying ? 
                                 <button className='btn-success btn'>✔️</button> :
                                 <button type="button" onClick={handleSubmit} className="addGame btn btn-outline-primary" >Add to my games</button>
                                 }
+                            </div>
                             
-                        </div>
-                        <div className="col-sm-7">
-                            <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
-                        </div>
-                        <div className='bg-secondary '>
-                            <p className='text-center'>Rate the {game.name}</p>
-                            <NewRating />
-                        </div>
+                            <div className='p-1'>
+                                <Link to={`/games/${game_id}/addreview`}>
+                                    <button type="button" className="btn btn-outline-primary" >Post a Review</button>
+                                </Link>
+                            </div>
+                            
+                            <div>
+                                <p >Rate the {game.name}</p>
+                                <NewRating activeUser={activeUser}/>
+                            </div>
+                            </> :
+                            <>
+                            </>
+                            }
+                            <div className='text-warning'>
+                            {rating ?
+                                <p>{game.name} has an average rating of {rating} &#9734; based off site users</p> :
+                                <p>{game.name} currently has no ratings from users on the site. Be the first by sending a rating above!</p>
+                            }
+                            </div>
+                            </div>
+                            <div className="col-sm-7">
+                                <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
+                            </div>
+
+                        
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">

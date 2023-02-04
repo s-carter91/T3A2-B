@@ -48,7 +48,7 @@ const Home = () => {
                                 </div>
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
-                                        <div className='col bg-secondary text-white'>
+                                        <div className='col bg-secondary m-1'>
                                             {CardItem(carddata.gamesCard[0])}
                                             {/* <button className="bi bi-star">  &#9734;</button>
                                             <button className="bi bi-star">  &#9734;</button>
