@@ -1,38 +1,74 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
-const SignUp = () => {
+const HOST_NAME = 'http://localhost:4002'
+
+const SignUp = ({setActiveUser, setToken}) => {
     const nav = useNavigate()
     
     const [username, setUsername] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
 
-    const postUser =async (username, name, password) => {
+    // const axiospost = () => {
+    // axios.post(HOST_NAME+'/auth/signup', {
+    //     username: username,
+    //     name: name,
+    //     password: password
+    // }).then (res => {
+    //     console.log(res.data.token)
+
+    //     // console.log(data)
+    // })}
+
+    const createUser = async() => {
         const newUser = {
             username: username,
             name: name,
             password: password
         }
-
-        const insertedUser = await fetch('https://localhost:4002/users/', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'},
-        body: JSON.stringify(newUser)
-
+    
+        const insertedUser = await fetch('http://localhost:4002/auth/signup', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+            body: JSON.stringify(newUser)
     })
     const data = await insertedUser.json()
-    nav('/home')
+    setActiveUser(data.user)
+    console.log(data)
+    localStorage.setItem('token', data.token)
+    setToken(data.token)
+    nav('/')
     }
+
+    // const postUser =async () => {
+    //     const newUser = {
+    //         username: username,
+    //         name: name,
+    //         password: password
+    //     }
+
+    //     const insertedUser = await fetch('https://localhost:4002/users/', {
+    //     method: 'POST',
+    //     headers: {
+    //         Accept: 'application/json',
+    //         'Content-Type': 'application/json'},
+    //     body: JSON.stringify(newUser)
+
+    // })
+    // const data = await insertedUser.json()
+    // console.log(data)
+    // nav('/home')
+    // }
     const handleSubmit = (event) => {
         event.preventDefault() 
-        postUser()
+        createUser()
 
     }
 
-        console.log(postUser)
 
 
   return (
@@ -53,16 +89,28 @@ const SignUp = () => {
             <small id="usernameHelp" className="form-text text-muted">We'll never share your details with anyone else.</small>
         </div>
         <div className="form-group">
+            <label htmlFor="exampleInputPassword1">Name</label>
+            <input 
+                type="name" 
+                className="form-control" 
+                id="exampleInputName" 
+                placeholder="Name"
+                onChange={(event) => setName(event.target.value)}
+                value={name}
+            />
+        </div>
+        <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
             <input 
                 type="password" 
                 className="form-control" 
                 id="exampleInputPassword1" 
                 placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 value={password}
             />
         </div>
+
         
         <button type="submit" className="btn btn-primary mt-4">Sign up</button>
         </div>

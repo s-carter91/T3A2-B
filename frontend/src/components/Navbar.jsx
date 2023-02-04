@@ -1,7 +1,15 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-const Navbar = ({activeUser}) => {
+
+
+const Navbar = ({ activeUser, setToken, setActiveUser }) => {
+
+  const logOut = () => {
+    localStorage.removeItem('token')
+    // setToken(null)
+    // setActiveUser('')
+}
   return (
 <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark bg-gradient">
   <div className="container-fluid">
@@ -23,13 +31,23 @@ const Navbar = ({activeUser}) => {
           </li>
         )} */}
         {activeUser ? (
-          <li className="nav-item">
-            <Link className="nav-link text-light" to="/my_profile">Profile</Link>
-          </li>
+          <>
+            <li className="nav-item">
+              <Link className="nav-link text-light" to="/my_profile">Profile</Link>
+            </li>
+            <li>
+              <Link className="nav-link text-light" onClick={logOut()} to="/">Logout</Link>
+            </li>
+          </>
         ) : (
-          <li className="nav-item">
-            <Link className="nav-link text-light" to="/users/login">Login</Link>
-          </li>
+          <>
+            <li className="nav-item">
+              <Link className="nav-link text-light" to="/login">Login</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link text-light" to="/signup">Signup</Link>
+            </li>
+          </>
         )}
       </ul>
     </div>

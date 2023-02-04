@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Login = () => {
+
+
+const Login = ({setActiveUser, setToken}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSubmit = () => {
+    const nav = useNavigate()
+
+    const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(username, password)
+        loginUser()
 
     }
 
@@ -25,6 +29,26 @@ const Login = () => {
 //         })
 //         const data = await response.json()
 //       }
+    const loginUser = async() => {
+        const loginDetails = {
+            username: username,
+            password: password
+        }
+
+        const loginUser = await fetch('http://localhost:4002/auth/login', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'},
+            body: JSON.stringify(loginDetails)
+    })
+    const data = await loginUser.json()
+    setActiveUser(data.user)
+    localStorage.setItem('token', data.token)
+    setToken(data.token)
+    nav('/')
+    }
+
 
 
   return (

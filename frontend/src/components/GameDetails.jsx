@@ -11,6 +11,7 @@ const GameDetails = ({ game, addGame, activeUser }) => {
     const handleSubmit = () => {
         addGame(game_id)
         setPlaying(true)
+        console.log('truers')
     }
 
 

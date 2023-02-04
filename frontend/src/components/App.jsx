@@ -8,6 +8,7 @@ import Profile from './Profile'
 import NewReview from './NewReview'
 import SignUp from './SignUp'
 import Login from './Login'
+// import Logout from './Logout'
 
 
 
@@ -16,9 +17,10 @@ const App = () => {
   const [ games, setGames ] = useState([])
   const [ reviews, setReview ] = useState([])
   const [ err, setErr ] = useState(false)
-  const [usersCurrentGamesState, setUsersCurrentGames] = useState([])
+  const [ usersCurrentGamesState, setUsersCurrentGames] = useState([])
   // const [ users, setUsers] = useState('')
   const [ activeUser, setActiveUser] = useState(null)
+  const [ token, setToken ] = useState(localStorage.getItem('token') || null)
 
 //HOC
   const ShowGameWrapper = () => {
@@ -42,19 +44,38 @@ const App = () => {
 
 
 //Fetch the user
-useEffect(() => {
-    // fetch the "user"
-    async function getActiveUser() {
-      const res = await fetch("http://localhost:4002/users/")
-      const data = await res.json()
-      console.log(data)
-      setActiveUser(data)
-      setUsersCurrentGames(data.currentGames)
-    }
-    getActiveUser()
-    // set userState to that user
-    // set usersCurrentGamesState
-  },[])
+// useEffect(() => {
+//     // fetch the "user"
+//     async function getActiveUser() {
+//       const res = await fetch("http://localhost:4002/users/")
+//       const data = await res.json()
+//       console.log(data)
+//       setActiveUser(data)
+//       setUsersCurrentGames(data.currentGames)
+//     }
+//     getActiveUser()
+//     // set userState to that user
+//     // set usersCurrentGamesState
+//   },[])
+
+  useEffect(() => {
+      async function checkForToken() {
+          const token = localStorage.getItem('token') 
+          
+          if (token) {
+              const res = await fetch("http://localhost:4002/auth/loggedin", {
+              headers: {
+                  "Authorization": `Bearer ${token}`
+              }}) 
+              const data = await res.json()
+              setActiveUser(data)
+          } else {
+            console.log('No token found')
+          }
+      }
+      checkForToken()
+  }, [])
+  
 
   const addGame = async (gameId) => {
     /// DEBUG
@@ -65,7 +86,7 @@ useEffect(() => {
         Accept: 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ gameId: gameId})
+        body: JSON.stringify({ gameId: gameId })
     })
     const data = await response.json()
     console.log(data)
@@ -74,12 +95,12 @@ useEffect(() => {
 
   return (
     <>
-    <Navbar activeUser={activeUser} />
+    <Navbar activeUser={activeUser} setToken={setToken}/>
     {err && alert(err)}
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<SignUp />} />
+      <Route path='/login' element={<Login setActiveUser={setActiveUser} setToken={setToken}/>} />
+      <Route path='/signup' element={<SignUp setActiveUser={setActiveUser} setToken={setToken}/>} />
       <Route path='/games' element={<Games games={games} />} />
       <Route path='/my_profile' element={<Profile activeUser={activeUser} />} />
       <Route path='/games/:game_id' element={<ShowGameWrapper />} />
