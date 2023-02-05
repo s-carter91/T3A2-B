@@ -9,11 +9,9 @@ const NewReview = ({ setReloadReview, activeUser, games}) => {
     const [ thanksForReview, setThanksForReview] = useState(false)
     const userId = activeUser
     const thisGame = games.find(game => game._id === game_Id)
-// 
+
+    // function that takes input data and sends to server
 const addReview = async (game, content, user) => { 
-    // const id = reviews.length
-    // games.find((game => game.name === game))
-    // add a new entry
     const newReview = {
       gameId: game, 
       content: content,
@@ -27,8 +25,6 @@ const addReview = async (game, content, user) => {
         },
         body: JSON.stringify(newReview)
     })
-    // const data = await insertedReview.json() 
-    console.log(insertedReview)
     setReloadReview(true)
     setThanksForReview(true)
     setTimeout(() => {
@@ -39,7 +35,6 @@ const addReview = async (game, content, user) => {
     const handleSubmit = (evt) => {
         evt.preventDefault()
         addReview(game_Id, content, userId)
-        // console.log(game_Id, userId, content)
     }
 
     // Cancel button to nav back to games page
@@ -52,13 +47,10 @@ const addReview = async (game, content, user) => {
             <h3 className='text-center'>Review for {thisGame.name}</h3>
             <form className="container" onSubmit={handleSubmit}>
                 <div className="form-group d-flex row justify-content-center">
-                    {/* <div className='w-25'> */}
-                        <img src={thisGame.image} alt={thisGame.name + 'image'}className='w-50 p-4'></img>
-                    {/* </div> */}
+                    <img src={thisGame.image} alt={thisGame.name + 'image'}className='w-50 p-4'></img>
                     <textarea value={content} onChange={evt => setContent(evt.target.value)} className="form-control row-5" type="text"></textarea>
                     {content.length == 0 && <span className="alert-warning text-danger">Review Can't Be Empty</span>}
 
-                
                     <button className="btn btn-success m-3" type="submit">Submit Review</button>
                     {thanksForReview ? <p>Thank you for the review</p>:
                     <></>}

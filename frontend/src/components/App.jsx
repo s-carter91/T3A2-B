@@ -17,11 +17,8 @@ const api_address = "https://t3a2-b-server-production.up.railway.app"
 const App = () => {
   const nav = useNavigate()
   const [ games, setGames ] = useState([]) // getting all games
-  const [ gameName, setGameName] = useState() // getting game to pass to new review
-  // const [ reviews, setReview ] = useState([])
   const [ err, setErr ] = useState(false)
   const [ usersCurrentGamesState, setUsersCurrentGames] = useState([])
-  // const [ users, setUsers] = useState('')
   const [ activeUser, setActiveUser] = useState(null) // getting the active user
   const [ token, setToken ] = useState(localStorage.getItem('token') || null) 
   const [ reloadReview, setReloadReview ] = useState(null)
@@ -43,16 +40,11 @@ const App = () => {
       setGames(data)
       }
       getGames()
-    // fetch the "games"
-    // set the gamesState to that list of games
   },[])
-
-
 
   useEffect(() => {
       async function checkForToken() {
           const token = localStorage.getItem('token') 
-          console.log(`${token} this is the token`)
           if (token && token.length > 10) {
               const res = await fetch(`${api_address}/auth/loggedin`, {
               headers: {
@@ -79,7 +71,6 @@ const App = () => {
         body: JSON.stringify({ gameId: gameId })
     })
     const data = await response.json()
-    console.log(data)
     setUsersCurrentGames([...usersCurrentGamesState, data])
   }
 
@@ -95,7 +86,6 @@ const App = () => {
         body: JSON.stringify({ gameId: gameId })
     })
     const data = await response.json()
-    console.log(data)
     setUsersCurrentGames([...usersCurrentGamesState, data])
   }
 

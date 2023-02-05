@@ -29,9 +29,6 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
             if (data.length>0) {
                 setDisplayReview(data[0])          
             }
-            else {
-                console.log("no reviews")
-            }
         }
         getReview()
     },[])
@@ -41,7 +38,6 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
         async function getRatings() {
             const res = await fetch(`https://t3a2-b-server-production.up.railway.app/ratings/stars/${game_id}`)
             const data = await res.json()
-            console.log(data + ' this is the ratings array')
             if (data.length > 0) {
                 const avg =
                     data.reduce((sum, curr) => sum + Number(curr), 0) /

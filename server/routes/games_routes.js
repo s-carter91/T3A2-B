@@ -24,9 +24,7 @@ router.get('/:id', async (req,res) =>{
     }
     catch (err) {
         res.status(500).send({error: err.message})
-
     }
-
 })
 
 // Add a game to games list test
@@ -60,7 +58,6 @@ router.put('/:id', async (req, res) => {
     catch (err) {
         res.status(500).send({error: err.message})
     }
-
 })
 
 // Delete a game from list
@@ -77,12 +74,5 @@ router.delete('/:id', async(req, res) => {
         res.status(500).send({error: err.message})
     }
 })
-
-//Genres
-// router.get('/genres', async (req,res) => res.send(await GenreModel.find()))
-
-//Platforms
-
-// router.get('/platforms', async (req,res) => res.send(await PlatformModel.find()))
 
 export default router

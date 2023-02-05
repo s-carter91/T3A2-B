@@ -7,17 +7,8 @@ dotenv.config()
 
 const router = express.Router()
 
-// const jwtMiddle = ( username ) => {
-//     jwtobj = jwt.sign({
-//         username: username
-//     }, "secreetKey")
-//     console.log(jwtobj)
-//     res.send(jwtobj)
-// }
-
 // check who is logged in
 router.get('/loggedin', jwtVerify,async (req, res) => {
-    console.log(req.user)
     res.send(req.user)
 })
 

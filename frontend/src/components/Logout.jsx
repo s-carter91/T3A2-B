@@ -1,10 +1,8 @@
 import React from "react"
 
-
-
 const Logout = ({ setToken, setActiveUser, nav }) => {
 
-    
+    // Logout function
     const logOut = () => {
         localStorage.removeItem('token')
         setToken(null)
@@ -14,7 +12,6 @@ const Logout = ({ setToken, setActiveUser, nav }) => {
     const no = () =>{
         nav(-1)
     }
-
 
     return (
         <>

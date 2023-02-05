@@ -3,8 +3,6 @@ import { UserModel } from '../models/UserModel.js'
 import { GameModel } from "../models/GameModel.js"
 import { ReviewModel } from "../models/ReviewModel.js"
 import { RatingModel } from "../models/RatingModel.js"
-import jwt from 'jsonwebtoken'
-import jwtVerify from "../middleware/auth.js"
 
 const router = express.Router()
 
@@ -28,11 +26,10 @@ router.get('/:id', async (req,res) =>{
     }
     catch (err) {
         res.status(500).send({error: err.message})
-
     }
-
 })
 
+// Get playing list
 router.get('/playing', async( req, res) => {
     req.header = {userId}
         const userObject = await UserModel
@@ -42,19 +39,6 @@ router.get('/playing', async( req, res) => {
         res.json(list)
     }
 )
-
-// router.get('/who_am_i', jwtVerify,async (req, res) => {
-//     console.log(req.user)
-//     res.send(req.user)
-// })
-
-// router.post('/signup', async( req, res) => {
-//     const jwtobj = jwt.sign({
-//         id: "63db5a04d111a98f4568a662"
-//     }, "secreetKey")
-//     console.log(jwtobj)
-//     res.send(jwtobj)
-// })
 
 // Add game to users playing list
 router.patch('/:userid/playing/', async (req, res) => {
@@ -111,18 +95,10 @@ router.delete('/:userid/playing/', async (req, res) => {
 
 // get all completed games 
 router.get('/:userid/completed', async( req, res) => {
-    // try {
-        
         const userObject = await UserModel.findById({ _id : req.params.userid })
         .populate("completedGames")
         const sendObj=userObject.completedGames
-        // const sendy = sendObj.map(async(id, index) => (
-        //     await GameModel.findById(id)
-        //     ))
-            // console.log(sendy)
         res.send(sendObj)
-    // } catch (err){
-    //     res.status(500).send({ error: err.message })
     }
 )
 
