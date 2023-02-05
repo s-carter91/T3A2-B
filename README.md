@@ -105,7 +105,7 @@ Below is a list of user stories and beneath each are how the User Story action f
 
 ### As an end-user of the site I want to be able to search for a game so I can view or add specific games to my profile without having to scroll through every game
 
-* User enters a game name into the search text box at the top of the games list and this leaves only the games 
+* User enters a game name into the search text box at the top of the games list and this leaves only the games
 * User enters a game name incorrectly into the search text box at the top of the games list and if no matches are found user is shown an error advising that no games exist in the database with that name
 * User types in “He” and commences the search. A list of all games containing “he” (starting with or throughout) will be displayed
 
@@ -182,6 +182,8 @@ Below is a list of user stories and beneath each are how the User Story action f
 ![Trello Wireframes](/Resources/trello_wireframes.png)
 
 ## R14 - Trello
+
+We used Agile methodologies when working through the project at hand. We discord called daily (and met up in the brisbane hub a few times last week) to go through what we were working on, while visiting the site regularly to go through the latest additions.
 
 ### [Trello Board](https://trello.com/invite/b/4uKg7dRY/ATTI8a20f701ab5d8e2986e1f41499dc31a199743729/t3a2-trello)
 
