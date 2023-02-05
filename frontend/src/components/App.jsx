@@ -95,6 +95,10 @@ const App = () => {
     const data = await response.json()
     console.log(data)
     setUsersCurrentGames([...usersCurrentGamesState, data])
+
+    const removeGame = async (gameId) => {
+      let response = await fetch
+    }
   }
 
   return (

@@ -18,7 +18,7 @@ const Games = ( { games } ) => {
                 <Link className="link-light text-decoration-none"  to={`/games/${game._id}`}>
                 <img src={game.image} alt='game' className="card-img-top" />
                 <h5>{game.name}</h5></Link>
-</div>
+            </div> 
                     
                 {/* </li> */}
             </div>)
