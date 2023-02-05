@@ -52,7 +52,7 @@ const Home = () => {
                                        <div className='col bg-secondary m-1'>
                                              <Link to="/games" className="link-light text-decoration-none">
                                                 {CardItem(carddata.gamesCard[0])}
-                                                </Link>
+                                            </Link>
                                             {/* <button className="bi bi-star">  &#9734;</button>
                                             <button className="bi bi-star">  &#9734;</button>
                                             <button className="bi bi-star">  &#9734;</button>
@@ -61,7 +61,9 @@ const Home = () => {
                                             {/* <NewRating /> */}
                                         </div>
                                         <div className='col bg-secondary m-1'>
-                                            <Link to="/login" className="link-light text-decoration-none" >{CardItem(carddata.gamesCard[1])}</Link>
+                                            <Link className="link-light text-decoration-none" to="/login">
+                                                {CardItem(carddata.gamesCard[1])}
+                                            </Link>
                                         </div> 
 
                                 </div>

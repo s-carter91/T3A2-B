@@ -74,7 +74,7 @@ const App = () => {
               const data = await res.json()
               setActiveUser(data)
           } else {
-            console.log('No token found. Please stop reading the console and login!')
+            console.log('No token found. {educator.name} please stop reading the console and login!')
           }
       }
       checkForToken()
