@@ -39,7 +39,7 @@ const App = () => {
   // Fetch the games
   useEffect(() => {
     async function getGames() {
-      const res = await fetch("https://localhost:4002/games")
+      const res = await fetch("http://localhost:4002/games")
       const data = await res.json()
       setGames(data)
       }
