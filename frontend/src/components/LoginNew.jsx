@@ -22,7 +22,7 @@ const Login = ({setActiveUser, setToken}) => {
             password: password
         }
 
-        const loginUser = await fetch('http://localhost:4002/auth/login', {
+        const loginUser = await fetch(`${process.env.API_URL}/auth/login`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

@@ -17,7 +17,7 @@ const SignUp = ({setActiveUser, setToken}) => {
             password: password
         }
     
-        const insertedUser = await fetch('http://localhost:4002/auth/signup', {
+        const insertedUser = await fetch(`${process.env.API_URL}/auth/signup`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
