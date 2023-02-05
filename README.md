@@ -1,10 +1,18 @@
 # T3A2-B Full Stack App (Part B)
-Test
 
+## R10 - BackloGGo Deployed Site
 
-# T3A2-A - Full Stack App (Part A)
+### [BackloGGo](https://t3a2-b-frontend-production.up.railway.app/)
 
-## Kwong Fei Alvin Lai & Sam Carter
+## R11 GitHub Respo - Part B
+
+### [GitHub Respo](https://github.com/s-carter91/T3A2-B)
+
+## R12 - Part A Documentation
+
+### T3A2-A - Full Stack App (Part A)
+
+### Kwong Fei Alvin Lai & Sam Carter
 
 ## [Github Repository Link](https://github.com/s-carter91/SamCarter_T3A2)
 
@@ -172,3 +180,20 @@ Below is a list of user stories and beneath each are how the User Story action f
 ![Trello Board - User Stories 2](Resources/trello_add_remove_user_stories.png)
 
 ![Trello Wireframes](/Resources/trello_wireframes.png)
+
+## R14 - Trello
+
+### [Trello Board](https://trello.com/invite/b/4uKg7dRY/ATTI8a20f701ab5d8e2986e1f41499dc31a199743729/t3a2-trello)
+
+Snapshot of Our Trello Board
+![Trello Board](/Resources/trello_overview.png)
+
+![Trello Card](/Resources/trello_card.png)
+
+![Trello Footer](/Resources/trello_footer.png)
+
+![Trello Review](/Resources/trello_review.png)
+
+## Note From the Authors
+
+We unfortunately underestimated how long relearning React and completing the site so we weren't able to include any extra components outside of our MVP. This aside, working on this project has been an incredible learning experience and the knowledge I've gained in the past two weeks has been gigantic.
