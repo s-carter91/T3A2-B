@@ -102,39 +102,27 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
                             </>
                             }
                             <div className='text-warning'>
-                            {rating ?
-                                <p>{game.name} has an average rating of {rating} &#9734; based off site users</p> :
-                                <p>{game.name} currently has no ratings from users on the site. Be the first by sending a rating above!</p>
-                            }
+                                {rating ?
+                                    <p>{game.name} has an average rating of {rating} &#9734; based off site users</p> :
+                                    <p>{game.name} currently has no ratings from users on the site. Be the first by sending a rating above!</p>
+                                }
                             </div>
-                            </div>
+                        </div>
                             <div className="col-sm-7">
                                 <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
                             </div>
 
                         
                                 <div className="row">
-                                <div className="card text-center bg-secondary text-white my-5 py-4">
-                                    <div className="card-body">
-                                        <h3>Reviews of {game.name} by other users on BackloGGo</h3>
-                                        {displayReview ? <p>{displayReview.content}</p>:
-                                        <p>This games doesn't have any reviews... yet!</p>}
+                                    <div className="card text-center bg-secondary text-white my-5 py-4">
+                                        <div className="card-body">
+                                            <h3>Reviews of {game.name} by other users on BackloGGo</h3>
+                                            {displayReview ? <p>{displayReview.content}</p>:
+                                            <p>This games doesn't have any reviews... yet!</p>}
                                     
                                     </div>
                                 </div>
-                                <div className="row">
-                                    {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
-                                        <div className='col bg-secondary text-white'>
-                                            1
-                                        </div>
-                                        <div className='col'>
-                                            2
-                                        </div>
-                                        <div className='col'>
-                                            3
-                                        </div>
 
-                                </div>
                             </div>
                         </div>
                     </div>
