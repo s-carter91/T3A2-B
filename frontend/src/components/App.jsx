@@ -14,7 +14,7 @@ import Footer from './Footer'
 import "../App.css"
 dotenv.config()
 
-
+api_address = "https://t3a2-b-server-production.up.railway.app"
 
 
 const App = () => {
@@ -41,7 +41,7 @@ const App = () => {
   // Fetch the games
   useEffect(() => {
     async function getGames() {
-      const res = await fetch(`${process.env.API_URL}/games`)
+      const res = await fetch(`${api_address}/games`)
       const data = await res.json()
       setGames(data)
       }
@@ -57,7 +57,7 @@ const App = () => {
           const token = localStorage.getItem('token') 
           console.log(`${token} this is the token`)
           if (token && token.length > 10) {
-              const res = await fetch(`${process.env.API_URL}/auth/loggedin`, {
+              const res = await fetch(`${api_address}/auth/loggedin`, {
               headers: {
                   "Authorization": `Bearer ${token}`
               }}) 
@@ -73,7 +73,7 @@ const App = () => {
   //Add game function
   const addGame = async (gameId) => {
 
-    let response = await fetch(`${process.env.API_URL}/users/${activeUser._id}/playing`,{ 
+    let response = await fetch(`${api_address}/users/${activeUser._id}/playing`,{ 
         method: 'PATCH',
         headers: {
         Accept: 'application/json',
@@ -89,7 +89,7 @@ const App = () => {
   //Remove game function
   const removeGame = async (gameId) => {
 
-    let response = await fetch(`${process.env.API_URL}/users/${activeUser._id}/playing`,{ 
+    let response = await fetch(`${api_address}/users/${activeUser._id}/playing`,{ 
         method: 'DELETE',
         headers: {
         'Accept': 'application/json',

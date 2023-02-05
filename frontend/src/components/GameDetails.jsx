@@ -24,7 +24,7 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
     // Fetches review to display on page
     useEffect(() => {
         async function getReview() {
-            const res = await fetch(`${process.env.API_URL}/reviews/${game_id}`)
+            const res = await fetch(`https://t3a2-b-server-production.up.railway.app/reviews/${game_id}`)
             const data = await res.json()
             if (data.length>0) {
                 setDisplayReview(data[0])          
@@ -39,7 +39,7 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
     // Fetches ratings (if there are any) and provides the average rating of a game
     useEffect(() => {
         async function getRatings() {
-            const res = await fetch(`${process.env.API_URL}/ratings/stars/${game_id}`)
+            const res = await fetch(`https://t3a2-b-server-production.up.railway.app/ratings/stars/${game_id}`)
             const data = await res.json()
             console.log(data + ' this is the ratings array')
             if (data.length > 0) {

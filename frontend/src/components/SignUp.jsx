@@ -17,7 +17,7 @@ const SignUp = ({setActiveUser, setToken}) => {
             password: password
         }
     
-        const insertedUser = await fetch(`${process.env.API_URL}/auth/signup`, {
+        const insertedUser = await fetch(`https://t3a2-b-server-production.up.railway.app/auth/signup`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
