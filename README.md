@@ -6,6 +6,8 @@
 
 ### [BackloGGo](https://t3a2-b-frontend-production.up.railway.app/)
 
+## R11 GitHub Repo - Part B
+
 ### [GitHub Respo](https://github.com/s-carter91/T3A2-B)
 
 ## User testing, development and production
@@ -29,6 +31,12 @@ Testing of a game route, object ID is populated with the description, gaming pla
 
 ![Route test 2](/Resources/Test/Postman2.jpg)
 Testing of a POST user sign up, JWT token is provided with user objects populated.
+
+![Route test 3](/Resources/post_review_route.png)
+Received a 409 status as user had already left a review but advised existing review was updated.
+
+![Route test 4](/Resources/playing_list_add_route.png)
+201 Status received back along with the Game Object.
 
 ## R12 - Part A Documentation
 
@@ -205,7 +213,7 @@ Below is a list of user stories and beneath each are how the User Story action f
 
 We used Agile methodologies when working through the project at hand. We discord called daily (and met up in the brisbane hub a few times last week) to go through what we were working on, while visiting the site regularly to go through the latest additions.
 
-### [Trello Board](https://trello.com/invite/b/4uKg7dRY/ATTI8a20f701ab5d8e2986e1f41499dc31a199743729/t3a2-trello)
+### [Trello Board Link](https://trello.com/invite/b/4uKg7dRY/ATTI8a20f701ab5d8e2986e1f41499dc31a199743729/t3a2-trello)
 
 Snapshot of Our Trello Board
 ![Trello Board](/Resources/trello_overview.png)
