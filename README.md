@@ -4,7 +4,7 @@
 
 ### [BackloGGo](https://t3a2-b-frontend-production.up.railway.app/)
 
-## R11 - GitHub Respo - Part B
+## R11 GitHub Respo - Part B
 
 ### [GitHub Respo](https://github.com/s-carter91/T3A2-B)
 
