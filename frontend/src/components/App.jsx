@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
-import { Routes, Route, useParams, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import GameDetails from './GameDetails'
 import Games from './Games'
 import Home from './Home'
@@ -10,6 +10,8 @@ import SignUp from './SignUp'
 import Login from './LoginNew'
 import Logout from './Logout'
 import Footer from './Footer'
+import "../App.css"
+
 
 
 
@@ -30,7 +32,7 @@ const App = () => {
   const ShowGameWrapper = () => {
     const { game_id } = useParams()
     const game_card = games.find(game => game._id == game_id)
-    return game_card ? <GameDetails game={game_card} addGame={addGame} activeUser={activeUser}
+    return game_card ? <GameDetails game={game_card} addGame={addGame} removeGame={removeGame} activeUser={activeUser}
     /> : <h4>Game not found!</h4>
 }
 
@@ -47,20 +49,6 @@ const App = () => {
   },[])
 
 
-//Fetch the user
-// useEffect(() => {
-//     // fetch the "user"
-//     async function getActiveUser() {
-//       const res = await fetch("http://localhost:4002/users/")
-//       const data = await res.json()
-//       console.log(data)
-//       setActiveUser(data)
-//       setUsersCurrentGames(data.currentGames)
-//     }
-//     getActiveUser()
-//     // set userState to that user
-//     // set usersCurrentGamesState
-//   },[])
 
   useEffect(() => {
       async function checkForToken() {
@@ -74,16 +62,15 @@ const App = () => {
               const data = await res.json()
               setActiveUser(data)
           } else {
-            console.log('No token found. {educator.name} please stop reading the console and login!')
+            console.log('No token found. Please stop reading the console and login!')
           }
       }
       checkForToken()
   }, [usersCurrentGamesState])
   
-
+  //Add game function
   const addGame = async (gameId) => {
-    /// DEBUG
-    /// ADD USER_ID TO /USERS/
+
     let response = await fetch(`http://localhost:4002/users/${activeUser._id}/playing`,{ 
         method: 'PATCH',
         headers: {
@@ -97,8 +84,27 @@ const App = () => {
     setUsersCurrentGames([...usersCurrentGamesState, data])
   }
 
+  //Remove game function
+  const removeGame = async (gameId) => {
+
+    let response = await fetch(`http://localhost:4002/users/${activeUser._id}/playing`,{ 
+        method: 'DELETE',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ gameId: gameId })
+    })
+    const data = await response.json()
+    console.log(data)
+    setUsersCurrentGames([...usersCurrentGamesState, data])
+  }
+
   return (
     <>
+  <div className="app">
+    <div className='page-container'>
+      <div className='content-wrapper'>
     <Navbar activeUser={activeUser} />
     {err && alert(err)}
     <Routes>
@@ -112,7 +118,10 @@ const App = () => {
       <Route path='/games/:game_Id/addreview' element={<NewReview activeUser={activeUser} games={games} setReloadReview={setReloadReview}/>} />
       <Route path='*' element={<h4>Page not found!</h4>} />
     </Routes>
+    </div>
     <Footer />
+    </div>
+  </div>
     </>
   )
 }

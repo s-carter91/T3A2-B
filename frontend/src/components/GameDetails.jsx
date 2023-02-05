@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import NewRating from './NewRating'
 
-const GameDetails = ({ game, addGame, activeUser, setGameName }) => {
+const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
     const {game_id} = useParams()
     const [ inPlaying, setPlaying ] = useState(false)
     const [ rating, setRating ] = useState(null)
     const [ reloadRating, setReloadRating ] = useState(null)
     const [ displayReview, setDisplayReview ] = useState(null)
+
+    const handleDelete= () =>{
+        removeGame(game_id)
+        setPlaying(false)
+    }
+
 
     const handleSubmit = () => {
         addGame(game_id)
@@ -73,6 +79,12 @@ const GameDetails = ({ game, addGame, activeUser, setGameName }) => {
                                 <button type="button" onClick={otherHandleSubmit} className='btn-success btn'>Remove from your playing List</button> :
                                 <button type="button" onClick={handleSubmit} className="addGame btn btn-outline-primary" >Add to my games</button>
                                 }
+                            </div>
+
+                            <div className='p-1'>
+
+                                <button type="button" onClick={handleDelete} className="deleteGame btn btn-outline-primary" >Remove from my games</button>
+                            
                             </div>
                             
                             <div className='p-1'>
