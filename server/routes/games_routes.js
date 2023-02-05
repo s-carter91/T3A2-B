@@ -7,8 +7,8 @@ import { PlatformModel } from '../models/PlatformModel.js'
 const router = express.Router()
 
 router.get('/', async (req, res) => res.send(await GameModel.find()
-    .populate({ path: 'platform', select: 'name'})
-    .populate({ path: 'genre', select: 'name'})
+    .populate("platform")
+    .populate("genre")
  // Will return all games with platform and genre names
 ))
 

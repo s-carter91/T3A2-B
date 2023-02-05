@@ -14,6 +14,7 @@ const jwtVerify = async( req, res, next ) => {
             .findById(decoded.id)
             .populate("currentGames")
             .populate("completedGames")
+            .select("-password")
         next()
     }
 }
