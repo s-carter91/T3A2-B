@@ -34,7 +34,7 @@ const App = () => {
     /> : <h4>Game not found!</h4>
 }
 
-  //Fetch the games
+  // Fetch the games
   useEffect(() => {
     async function getGames() {
       const res = await fetch("http://localhost:4002/games")

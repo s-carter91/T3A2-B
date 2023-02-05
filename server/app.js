@@ -7,6 +7,7 @@ import { GenreModel } from './models/GenreModel.js'
 import { PlatformModel } from './models/PlatformModel.js'
 import usersRoutes from './routes/user_routes.js'
 import authRoutes from './routes/user_auth.js'
+import genreRoutes from './routes/genres_routes.js'
 
 const app = express()
 
@@ -29,6 +30,8 @@ app.use('/reviews', reviewsRoutes)
 app.use('/ratings', ratingsRoutes)
 
 app.use('/auth', authRoutes)
+
+app.use('/genres', genreRoutes)
 
 console.log("Greet Friends")
 

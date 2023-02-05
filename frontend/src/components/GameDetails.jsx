@@ -70,7 +70,7 @@ const GameDetails = ({ game, addGame, activeUser, setGameName }) => {
                             <>
                             <div className='p-1'>
                             {inPlaying ? 
-                                <button className='btn-success btn'>✔️</button> :
+                                <button type="button" onClick={otherHandleSubmit} className='btn-success btn'>Remove from your playing List</button> :
                                 <button type="button" onClick={handleSubmit} className="addGame btn btn-outline-primary" >Add to my games</button>
                                 }
                             </div>
