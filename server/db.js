@@ -20,6 +20,4 @@ try {
     }
 }
 
-
-
 export { dbClose, connectToDb }

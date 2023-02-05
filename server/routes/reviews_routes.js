@@ -9,8 +9,7 @@ const router = express.Router()
 
 //GET all reviews
 router.get('/', async (req, res) => res.send(await ReviewModel.find()
-    // .populate('gameId')
- // Will return all reviews
+// Will return all reviews
 ))
 
 // GET all reviews for a game
@@ -20,7 +19,6 @@ router.get('/:gameid', async (req, res) => {
         if (game) {
             const reviews = await ReviewModel.find({ gameId: req.params.gameid })
             if (reviews) {
-                console.log(reviews)
                 res.send(reviews)                
             } else {
                 res.status(404).send({ error: 'that game does not have any reviews' })
@@ -87,7 +85,6 @@ router.delete('/:id', async(req, res) => {
         res.status(500).send({error: err.message})
     }
 })
-
 
 
 export default router

@@ -58,7 +58,6 @@ router.post('/:gameId', async (req, res) => {
             const checkForRating = await RatingModel.findOne({ gameId: req.params.gameId , userId: userId })
             if (checkForRating) {
                 await RatingModel.findByIdAndUpdate({ _id: checkForRating._id }, { stars: stars })
-                console.log(checkForRating._id, stars)
                 res.status(409).send({ error: 'user already has review for this game. Updating review now' })
             }
             else {

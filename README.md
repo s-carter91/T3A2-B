@@ -4,7 +4,7 @@
 
 ### [BackloGGo](https://t3a2-b-frontend-production.up.railway.app/)
 
-## R11 GitHub Respo - Part B
+## R11 - GitHub Respo - Part B
 
 ### [GitHub Respo](https://github.com/s-carter91/T3A2-B)
 
@@ -196,4 +196,4 @@ Snapshot of Our Trello Board
 
 ## Note From the Authors
 
-We unfortunately underestimated how long relearning React and completing the site so we weren't able to include any extra components outside of our MVP. This aside, working on this project has been an incredible learning experience and the knowledge I've gained in the past two weeks has been gigantic.
+We unfortunately underestimated how long relearning React and completing the site would take so we weren't able to include any extra components outside of our MVP. This aside, working on this project has been an incredible learning experience and the knowledge I've gained in the past two weeks has been gigantic.

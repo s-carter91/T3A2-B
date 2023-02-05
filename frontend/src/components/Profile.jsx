@@ -4,10 +4,7 @@ import "./games.css";
 
 
 const Profile = ({activeUser}) => {
-    console.log(activeUser.currentGames)
     const {_id, currentGames, completedGames } = activeUser
-    console.log(currentGames)
-    console.log(completedGames)
     return (
         <div className='profile'>
             <main>

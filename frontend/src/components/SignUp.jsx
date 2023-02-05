@@ -10,13 +10,13 @@ const SignUp = ({setActiveUser, setToken}) => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
 
+    // Signup function
     const createUser = async() => {
         const newUser = {
             username: username,
             name: name,
             password: password
         }
-    
         const insertedUser = await fetch(`https://t3a2-b-server-production.up.railway.app/auth/signup`, {
             method: 'POST',
             headers: {
@@ -26,7 +26,6 @@ const SignUp = ({setActiveUser, setToken}) => {
     })
     const data = await insertedUser.json()
     setActiveUser(data.user)
-    console.log(data)
     localStorage.setItem('token', data.token)
     setToken(data.token)
     nav('/')
@@ -35,10 +34,7 @@ const SignUp = ({setActiveUser, setToken}) => {
     const handleSubmit = (event) => {
         event.preventDefault() 
         createUser()
-
     }
-
-
 
   return (
     <>
@@ -78,10 +74,10 @@ const SignUp = ({setActiveUser, setToken}) => {
                     onChange={(event) => setPassword(event.target.value)}
                     value={password}
                 />
-        </div>
+            </div>
 
         
-        <button type="submit" className="btn btn-primary mt-4">Sign up</button>
+            <button type="submit" className="btn btn-primary mt-4">Sign up</button>
         </div>
         </div>
     </form>

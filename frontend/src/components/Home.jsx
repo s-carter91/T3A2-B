@@ -1,7 +1,5 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
 import CardItem  from './Card'
-import NewRating from './NewRating'
 import { Link } from 'react-router-dom'
 
 const carddata = {gamesCard: [
