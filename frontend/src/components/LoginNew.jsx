@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import "./form.css"
 
 
 const Login = ({setActiveUser, setToken}) => {
@@ -41,7 +41,7 @@ const Login = ({setActiveUser, setToken}) => {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
   {/* Username input */}
   <div className="form-group">
     <label htmlFor="username">Username</label>
