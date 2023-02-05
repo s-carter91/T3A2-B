@@ -1,20 +1,14 @@
 # T3A2-B Full Stack App (Part B)
 
+### Kwong Fei Alvin Lai & Sam Carter
+
 ## R10 - BackloGGo Deployed Site
 
 ### [BackloGGo](https://t3a2-b-frontend-production.up.railway.app/)
 
 ## R11 GitHub Repo - Part B
 
-### [GitHub Repo](https://github.com/s-carter91/T3A2-B)
-
-## R12 - Part A Documentation
-
-### T3A2-A - Full Stack App (Part A)
-
-### Kwong Fei Alvin Lai & Sam Carter
-
-## [Github Repository Link](https://github.com/s-carter91/SamCarter_T3A2)
+### [GitHub Respo](https://github.com/s-carter91/T3A2-B)
 
 ## User testing, development and production
 
@@ -28,7 +22,21 @@
 
 ![User Test 5](/Resources/Test/test5.jpg)
 
-![User Test 6](/Resources/Test/test6.jpg
+![User Test 6](/Resources/Test/test6.jpg)
+
+## Testing of routes
+
+![Route test 1](/Resources/Test/postman1.jpg)
+Testing of a game route, object ID is populated with the description, gaming platform and image url.
+
+![Route test 2](/Resources/Test/postman2.jpg)
+Testing of a POST user sign up, JWT token is provided with user objects populated.
+
+## R12 - Part A Documentation
+
+### T3A2-A - Full Stack App (Part A)
+
+## [Github Repository Link](https://github.com/s-carter91/SamCarter_T3A2)
 
 ## R1 - Description of the Website
 
