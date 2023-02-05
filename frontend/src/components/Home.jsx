@@ -44,7 +44,7 @@ const Home = () => {
                                 <div className="row">
                                 <div className="card text-center bg-secondary text-white my-5 py-4">
                                     <div className="card-body">
-                                    This is some text within a card body.
+                                    <h2>Gaming Made Easy🔥</h2>
                                     </div>
                                 </div>
                                 <div className="row">
