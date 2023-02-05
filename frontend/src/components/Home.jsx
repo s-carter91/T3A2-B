@@ -50,7 +50,7 @@ const Home = () => {
                                 <div className="row">
                                     {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
                                        <div className='col bg-secondary m-1'>
-                                            <Link className="link-light text-decoration-none" to="/games">
+                                             <Link to="/games" className="link-light text-decoration-none">
                                                 {CardItem(carddata.gamesCard[0])}
                                             </Link>
                                             {/* <button className="bi bi-star">  &#9734;</button>

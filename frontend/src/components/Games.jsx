@@ -15,7 +15,7 @@ const Games = ( { games } ) => {
             <div key={index} className="gameli bg-dark m-1 ">
                 {/* <li key={index} className="game m-4" > */}
                 <div className="card col text-center bg-dark text-white" >
-                <Link to={`/games/${game._id}`}>
+                <Link className="link-light text-decoration-none"  to={`/games/${game._id}`}>
                 <img src={game.image} alt='game' className="card-img-top" />
                 <h5>{game.name}</h5></Link>
 </div>
