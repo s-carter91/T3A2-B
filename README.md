@@ -32,6 +32,12 @@ Testing of a game route, object ID is populated with the description, gaming pla
 ![Route test 2](/Resources/Test/postman2.jpg)
 Testing of a POST user sign up, JWT token is provided with user objects populated.
 
+![Route test 3](/Resources/post_review_route.png)
+Received a 409 status as user had already left a review but advised existing review was updated.
+
+![Route test 4](/Resources/playing_list_add_route.png)
+201 Status received back along with the Game Object.
+
 ## R12 - Part A Documentation
 
 ### T3A2-A - Full Stack App (Part A)
