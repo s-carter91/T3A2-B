@@ -27,7 +27,7 @@
 ![Route test 1](/Resources/Test/postman1.jpg)
 Testing of a game route, object ID is populated with the description, gaming platform and image url.
 
-![Route test 2](/Resources/Test/postman2.jpg)
+![Route test 2](/Resources/Test/Postman2.jpg)
 Testing of a POST user sign up, JWT token is provided with user objects populated.
 
 ## R12 - Part A Documentation
