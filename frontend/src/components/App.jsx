@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import dotenv from 'dotenv'
 import Navbar from './Navbar'
 import { BrowserRouter as Router, Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import GameDetails from './GameDetails'
@@ -12,7 +11,6 @@ import Login from './LoginNew'
 import Logout from './Logout'
 import Footer from './Footer'
 import "../App.css"
-dotenv.config()
 
 api_address = "https://t3a2-b-server-production.up.railway.app"
 
