@@ -19,7 +19,7 @@ const addReview = async (game, content, user) => {
       content: content,
       userId : user
     }
-    const insertedReview = await fetch(`${process.env.API_URL}/reviews`,{ 
+    const insertedReview = await fetch(`https://t3a2-b-server-production.up.railway.app/reviews`,{ 
         method: 'POST',
         headers: {
           Accept: 'application/json',

@@ -24,7 +24,7 @@ const NewRating = ({ activeUser, setReloadRating }) => {
                 stars: stars,
                 userId : userId
             }
-            const insertedRating = await fetch(`${process.env.API_URL}/ratings/${game_id}`,{ 
+            const insertedRating = await fetch(`https://t3a2-b-server-production.up.railway.app/ratings/${game_id}`,{ 
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',

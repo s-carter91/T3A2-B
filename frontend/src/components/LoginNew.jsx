@@ -22,7 +22,7 @@ const Login = ({setActiveUser, setToken}) => {
             password: password
         }
 
-        const loginUser = await fetch(`${process.env.API_URL}/auth/login`, {
+        const loginUser = await fetch(`https://t3a2-b-server-production.up.railway.app/auth/login`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
