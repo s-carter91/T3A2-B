@@ -9,6 +9,12 @@ describe('App tests', () => {
         expect(res.body.info).toBeDefined() // This line is good for checking if a key  exists. Seems redundant but will give more information to the developer of where it fails.
         expect(res.body.info).toBe('Backloggo')
     })
+
+    test('Get games',  async () => {
+        const res = await request(app).get('/games')
+        expect(res.status).toBe(200)
+
+    })
 })
     
     // test('Add a game to user profile currently playing', async () => {
@@ -38,7 +44,7 @@ describe('App tests', () => {
     //     it('Has an element with the correct structure and data', () => {
     //         res.body.forEach(el => {
     //             expect(el._id).toBeDefined()
-    //             expect(el.name).toBeDefined()
+    //             expect(el.name).toBeDefin ed()
     //             expect(el.genre).toBeDefined()
     //             expect(el.platform).toBeDefined()
     //             expect(el._id.length).toBe(24)  

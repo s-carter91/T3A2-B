@@ -72,7 +72,7 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
                             <>
                             <div className='p-1'>
                             {inPlaying ? 
-                                <button type="button" onClick={otherHandleSubmit} className='btn-success btn'>Remove from your playing List</button> :
+                                <button type="button" onClick={handleDelete} className='btn-success btn'>Remove from your playing List</button> :
                                 <button type="button" onClick={handleSubmit} className="addGame btn btn-outline-primary" >Add to my games</button>
                                 }
                             </div>
@@ -118,6 +118,17 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
                                     
                                     </div>
                                 </div>
+                                <div className="row">
+                                    {/* <div className="flex flex-col md:flex-row items-center justify-center"> */}
+                                        <div className='col bg-secondary text-white'>
+                                            
+                                        </div>
+                                        <div className='col'>
+                                            
+                                        </div>
+                                        <div className='col'>
+                                            
+                                        </div>
 
                             </div>
                         </div>
