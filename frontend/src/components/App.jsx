@@ -12,8 +12,7 @@ import Logout from './Logout'
 import Footer from './Footer'
 import "../App.css"
 
-api_address = "https://t3a2-b-server-production.up.railway.app"
-
+const api_address = "https://t3a2-b-server-production.up.railway.app"
 
 const App = () => {
   const nav = useNavigate()
