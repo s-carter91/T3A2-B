@@ -31,7 +31,7 @@ const CardItem = ( object ) => {
                 <p >{object.info}</p>
                 <ul className='list-unstyled p-0'>
                 {object.icon.map((icon, index) => (
-                    <li className="test-left">
+                    <li key={index} className="test-left">
                         <img src={icon} width={20} alt={object.alt[index]}/><span>{object.description[index]}</span>
                     </li>
                 ))}

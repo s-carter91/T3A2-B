@@ -65,8 +65,8 @@ const App = () => {
   useEffect(() => {
       async function checkForToken() {
           const token = localStorage.getItem('token') 
-          console.log(`${token} this is hte token`)
-          if (token.length > 10) {
+          console.log(`${token} this is the token`)
+          if (token && token.length > 10) {
               const res = await fetch("http://localhost:4002/auth/loggedin", {
               headers: {
                   "Authorization": `Bearer ${token}`
