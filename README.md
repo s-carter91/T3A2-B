@@ -20,7 +20,7 @@
 
 ![User Test 5](/Resources/Test/test5.jpg)
 
-![User Test 6](/Resources/Test/test6.jpg
+![User Test 6](/Resources/Test/test6.jpg)
 
 ## R12 - Part A Documentation
 
