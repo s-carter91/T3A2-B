@@ -19,7 +19,7 @@ const addReview = async (game, content, user) => {
       content: content,
       userId : user
     }
-    const insertedReview = await fetch('http://localhost:4002/reviews',{ 
+    const insertedReview = await fetch(`${process.env.API_URL}/reviews`,{ 
         method: 'POST',
         headers: {
           Accept: 'application/json',

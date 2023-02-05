@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import dotenv from 'dotenv'
 import Navbar from './Navbar'
 import { BrowserRouter as Router, Routes, Route, useParams, useNavigate } from 'react-router-dom'
 import GameDetails from './GameDetails'
@@ -11,6 +12,7 @@ import Login from './LoginNew'
 import Logout from './Logout'
 import Footer from './Footer'
 import "../App.css"
+dotenv.config()
 
 
 
@@ -39,7 +41,7 @@ const App = () => {
   // Fetch the games
   useEffect(() => {
     async function getGames() {
-      const res = await fetch("http://localhost:4002/games")
+      const res = await fetch(`${process.env.API_URL}/games`)
       const data = await res.json()
       setGames(data)
       }
@@ -55,7 +57,7 @@ const App = () => {
           const token = localStorage.getItem('token') 
           console.log(`${token} this is the token`)
           if (token && token.length > 10) {
-              const res = await fetch("http://localhost:4002/auth/loggedin", {
+              const res = await fetch(`${process.env.API_URL}/auth/loggedin`, {
               headers: {
                   "Authorization": `Bearer ${token}`
               }}) 
@@ -71,7 +73,7 @@ const App = () => {
   //Add game function
   const addGame = async (gameId) => {
 
-    let response = await fetch(`http://localhost:4002/users/${activeUser._id}/playing`,{ 
+    let response = await fetch(`${process.env.API_URL}/users/${activeUser._id}/playing`,{ 
         method: 'PATCH',
         headers: {
         Accept: 'application/json',
@@ -87,7 +89,7 @@ const App = () => {
   //Remove game function
   const removeGame = async (gameId) => {
 
-    let response = await fetch(`http://localhost:4002/users/${activeUser._id}/playing`,{ 
+    let response = await fetch(`${process.env.API_URL}/users/${activeUser._id}/playing`,{ 
         method: 'DELETE',
         headers: {
         'Accept': 'application/json',
