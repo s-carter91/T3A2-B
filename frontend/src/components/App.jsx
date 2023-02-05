@@ -66,7 +66,7 @@ const App = () => {
       async function checkForToken() {
           const token = localStorage.getItem('token') 
           console.log(`${token} this is hte token`)
-          if (token.length > 10) {
+          if (token && token.length > 10) {
               const res = await fetch("http://localhost:4002/auth/loggedin", {
               headers: {
                   "Authorization": `Bearer ${token}`
@@ -74,7 +74,7 @@ const App = () => {
               const data = await res.json()
               setActiveUser(data)
           } else {
-            console.log('No token found. Please stop reading the console and login!')
+            console.log('No token found. {educator.name} please stop reading the console and login!')
           }
       }
       checkForToken()
