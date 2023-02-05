@@ -4,9 +4,9 @@
 
 ### [BackloGGo](https://t3a2-b-frontend-production.up.railway.app/)
 
-## R11 GitHub Respo - Part B
+## R11 GitHub Repo - Part B
 
-### [GitHub Respo](https://github.com/s-carter91/T3A2-B)
+### [GitHub Repo](https://github.com/s-carter91/T3A2-B)
 
 ## R12 - Part A Documentation
 
@@ -199,7 +199,7 @@ Below is a list of user stories and beneath each are how the User Story action f
 
 We used Agile methodologies when working through the project at hand. We discord called daily (and met up in the brisbane hub a few times last week) to go through what we were working on, while visiting the site regularly to go through the latest additions.
 
-### [Trello Board](https://trello.com/invite/b/4uKg7dRY/ATTI8a20f701ab5d8e2986e1f41499dc31a199743729/t3a2-trello)
+### [Trello Board Link](https://trello.com/invite/b/4uKg7dRY/ATTI8a20f701ab5d8e2986e1f41499dc31a199743729/t3a2-trello)
 
 Snapshot of Our Trello Board
 ![Trello Board](/Resources/trello_overview.png)

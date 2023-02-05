@@ -108,7 +108,7 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
                                 <img src= {game.image} className="img-fluid rounded" alt="dummy"/>
                             </div>
 
-                        
+        
                                 <div className="row">
                                     <div className="card text-center bg-secondary text-white my-5 py-4">
                                         <div className="card-body">
@@ -134,7 +134,7 @@ const GameDetails = ({ game, addGame, activeUser, removeGame }) => {
                         </div>
                     </div>
                 </div>
-
+                </div>
             </main>
         
     </div>
